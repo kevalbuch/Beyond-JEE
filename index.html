@@ -92,7 +92,7 @@ h1,h2,h3,h4,p,ul,ol,dl,dd,figure{margin:0}
 .sd-e{color:var(--dim)}
 
 /* nav */
-.app{display:grid;grid-template-columns:256px minmax(0,1fr);max-width:1480px;margin-inline:auto;min-height:100vh}
+.app{display:grid;grid-template-columns:256px minmax(0,1fr);min-height:100vh}
 .side{position:sticky;top:0;align-self:start;height:100vh;height:100dvh;display:flex;flex-direction:column;gap:12px;padding:20px 16px 16px;border-right:1px solid var(--rule);overflow-y:auto;scrollbar-width:thin}
 .brand{display:inline-flex;align-items:center;gap:10px;padding:4px 10px 12px;font:800 1.3rem/1 var(--f-display);letter-spacing:-.02em;text-decoration:none;white-space:nowrap}
 .brand svg{width:26px;height:26px;flex:none}
@@ -107,7 +107,7 @@ h1,h2,h3,h4,p,ul,ol,dl,dd,figure{margin:0}
 .nav-act{display:flex;gap:8px;margin-top:auto;padding-top:12px}
 .nav-act .ib:first-child{flex:1;justify-content:flex-start}
 .main{min-width:0;padding:clamp(20px,3.5vw,48px) clamp(16px,4vw,56px) 64px}
-.view{max-width:1040px}
+.view{max-width:1040px;margin-inline:auto}
 .view[hidden]{display:none}
 .tabs{display:none}
 .ib{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:36px;min-width:36px;padding:0 10px;border:1px solid var(--rule);background:var(--sheet);border-radius:8px;color:var(--lead);font-size:.875rem;transition:border-color .15s,color .15s}
@@ -294,7 +294,7 @@ h3{font-weight:600}
 .gm{display:inline-block;padding:1px 10px;border-radius:4px;background:var(--pink-mark);color:var(--ink);font-size:.8125rem;font-weight:600;line-height:1.5;white-space:nowrap;vertical-align:middle}
 .cr .nm .gm{display:block;width:fit-content;max-width:100%;margin:6px 0 2px;white-space:normal;line-height:1.35}
 .g-sec .sh h2{color:var(--pink-deep)}
-.view.g-sec{background:var(--pink-soft);padding:clamp(20px,3vw,40px);border-radius:20px;max-width:1040px}
+.view.g-sec{background:var(--pink-soft);padding:clamp(20px,3vw,40px);border-radius:20px}
 .g-stats{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));border-top:2px solid var(--pink)}
 .g-stat{padding:24px 24px 24px 0;border-bottom:1px solid var(--pink-line)}
 .g-stat b{display:block;font:800 clamp(2.5rem,5vw,3.75rem)/.95 var(--f-display);letter-spacing:-.04em;color:var(--pink)}
