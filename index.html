@@ -292,6 +292,40 @@ footer{padding-block:32px 100px;max-width:76ch}
 /* floating list button */
 .pill{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;display:flex;align-items:center;gap:10px;padding:9px 16px;background:var(--ink);color:#fff;border:0;border-radius:999px;font-size:.8125rem;font-weight:600;box-shadow:0 8px 22px -10px rgba(18,26,43,.6)}
 .pill b{font:600 .75rem var(--f-mono);color:var(--ink);background:#fff;padding:1px 8px;border-radius:999px}
+
+/* girl candidates: pink role */
+:root{--pink:#B0245F;--pink-deep:#8A1B4A;--pink-soft:#FDEEF5;--pink-line:#F3C3D8}
+.gb{display:inline-flex;align-items:center;gap:5px;padding:2px 9px;border-radius:999px;border:1px solid var(--pink-line);background:var(--pink-soft);color:var(--pink);font:600 .6875rem/1.5 var(--f-mono);letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;vertical-align:middle}
+.gb::before{content:"\2640";font-size:1em;font-weight:700}
+.cr .nm .gb{margin-left:4px}
+.g-card .gb{text-transform:none;letter-spacing:.02em;font-size:.75rem}
+.callout.girl{background:var(--pink-soft);border-color:var(--pink-line)} .callout.girl h4{color:var(--pink)} .callout.girl p{color:var(--ink)}
+.g-sec{background:linear-gradient(180deg,var(--pink-soft) 0,rgba(253,238,245,0) 340px);margin-inline:calc(-1*clamp(16px,4vw,40px));padding-inline:clamp(16px,4vw,40px);border-top-color:var(--pink-line)}
+.g-sec .eyebrow{color:var(--pink)}
+.g-sec .sh h2{color:var(--pink-deep)}
+.g-sec .sh .gb{vertical-align:baseline}
+.g-stats{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));margin:0 0 6px}
+.g-stat{padding:12px 14px;border-radius:10px;background:var(--sheet);border:1px solid var(--pink-line)}
+.g-stat b{display:block;font:700 2rem/1 var(--f-display);color:var(--pink);font-variant-numeric:tabular-nums}
+.g-stat span{display:block;margin-top:5px;font-size:.8125rem;line-height:1.4;color:var(--lead)}
+.g-sub{color:var(--pink-deep);margin-top:28px}
+.g-grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))}
+.g-card{background:var(--sheet);border:1px solid var(--pink-line);border-left:4px solid var(--pink);border-radius:10px;padding:14px 16px;display:grid;gap:8px;align-content:start;min-width:0}
+.g-card h3{font:700 1.15rem/1.25 var(--f-display);margin:0}
+.g-card ul{margin:0;padding-left:18px;display:grid;gap:5px;color:var(--lead);font-size:.9375rem}
+.g-card li strong{color:var(--ink);font-weight:600}
+.g-foot{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-top:2px}
+.src-n{font-size:.75rem;color:var(--dim)} .src-n a{color:var(--accent)}
+.g-scroll{border-color:var(--pink-line)}
+.g-t th{background:var(--pink-soft);color:var(--pink-deep)}
+.g-t td.gp{font-weight:700;color:var(--pink);font-size:1rem;white-space:nowrap}
+.g-t td.gs{font-weight:600;color:var(--green);white-space:nowrap}
+.g-t td.gn{color:var(--dim);font-size:.8125rem}
+.g-t td:first-child{font-weight:600;color:var(--ink)}
+.g-none{display:grid;gap:0;border-top:1px solid var(--soft)}
+.g-none div{display:grid;gap:1px 20px;padding:9px 0;border-bottom:1px solid var(--soft)}
+@media (min-width:700px){.g-none div{grid-template-columns:160px minmax(0,1fr)}}
+.g-none b{font-weight:600}.g-none span{color:var(--lead);font-size:.9375rem}
 </style>
 </head>
 <body>
@@ -302,11 +336,12 @@ footer{padding-block:32px 100px;max-width:76ch}
       <a href="#soon" data-s="soon"><b>A</b><span>Closing soon</span></a>
       <a href="#cal" data-s="cal"><b>B</b><span>Calendar</span></a>
       <a href="#exams" data-s="exams"><b>C</b><span>Exams</span></a>
-      <a href="#syllabus" data-s="syllabus"><b>D</b><span>Syllabus</span></a>
-      <a href="#careers" data-s="careers"><b>E</b><span>Careers</span></a>
-      <a href="#finder" data-s="finder"><b>F</b><span>Path finder</span></a>
-      <a href="#plan" data-s="plan"><b>G</b><span>My plan</span></a>
-      <a href="#sources" data-s="sources"><b>H</b><span>Sources</span></a>
+      <a href="#girls" data-s="girls"><b>D</b><span>For girls</span></a>
+      <a href="#syllabus" data-s="syllabus"><b>E</b><span>Syllabus</span></a>
+      <a href="#careers" data-s="careers"><b>F</b><span>Careers</span></a>
+      <a href="#finder" data-s="finder"><b>G</b><span>Path finder</span></a>
+      <a href="#plan" data-s="plan"><b>H</b><span>My plan</span></a>
+      <a href="#sources" data-s="sources"><b>I</b><span>Sources</span></a>
     </div>
   </div>
   <div class="nav-progress" id="navProg"></div>
@@ -369,9 +404,18 @@ footer{padding-block:32px 100px;max-width:76ch}
     <div id="exOut"></div>
   </section>
 
+  <section class="block g-sec" id="girls">
+    <header class="sh">
+      <p class="eyebrow mono">Section D <em>· For girl candidates</em></p>
+      <h2>Seats, fee cuts and scholarships for girls</h2>
+      <p class="lede">Every girls-only benefit found for the exams in this guide, with the exact numbers. Look for the pink <span class="gb">girls tag</span> on exams in the calendar and the exam list.</p>
+    </header>
+    <div id="girlsOut"></div>
+  </section>
+
   <section class="block" id="syllabus">
     <header class="sh">
-      <p class="eyebrow mono">Section D <em>· Syllabus</em></p>
+      <p class="eyebrow mono">Section E <em>· Syllabus</em></p>
       <h2>Prepare once, sit many exams</h2>
       <p class="lede">Most engineering and science exams test the same Class 11–12 NCERT PCM syllabus. JEE Main preparation covers roughly 90 to 100 percent of it. The extras are listed below.</p>
     </header>
@@ -383,7 +427,7 @@ footer{padding-block:32px 100px;max-width:76ch}
 
   <section class="block" id="careers">
     <header class="sh">
-      <p class="eyebrow mono">Section E <em>· After the exam</em></p>
+      <p class="eyebrow mono">Section F <em>· After the exam</em></p>
       <h2>What each route leads to</h2>
       <p class="lede">The exam gets you a seat. The college, the branch and your skills decide the job. Pay figures are approximate starting ranges, not verified for 2026. Check each college’s latest placement report.</p>
     </header>
@@ -399,7 +443,7 @@ footer{padding-block:32px 100px;max-width:76ch}
 
   <section class="block" id="finder">
     <header class="sh">
-      <p class="eyebrow mono">Section F <em>· Path finder</em></p>
+      <p class="eyebrow mono">Section G <em>· Path finder</em></p>
       <h2>Which route fits you</h2>
       <p class="lede">Three questions. You get two suggested routes with an exam set for each.</p>
     </header>
@@ -408,7 +452,7 @@ footer{padding-block:32px 100px;max-width:76ch}
 
   <section class="block" id="plan">
     <header class="sh">
-      <p class="eyebrow mono">Section G <em>· My plan</em></p>
+      <p class="eyebrow mono">Section H <em>· My plan</em></p>
       <h2>Your exam list</h2>
       <p class="lede">Add exams from the calendar, the exam list or the path finder. Your list stays in this browser only.</p>
     </header>
@@ -429,7 +473,7 @@ footer{padding-block:32px 100px;max-width:76ch}
 
   <section class="block" id="sources">
     <header class="sh">
-      <p class="eyebrow mono">Section H <em>· Official portals</em></p>
+      <p class="eyebrow mono">Section I <em>· Official portals</em></p>
       <h2>Where the forms are</h2>
       <p class="lede">Apply only on the official site of the conducting body.</p>
     </header>
@@ -493,7 +537,7 @@ const TICKETS=[
 {n:"NID DAT 2027",sub:"Design · B.Des at NID",kind:"c",due:"2026-11-30T23:59:00+05:30",close:"30 Nov 2026",exam:"Prelims 20 Dec",url:"https://admissions.nid.edu",host:"admissions.nid.edu"},
 {n:"NDA & NA (I) 2027",sub:"Defence · UPSC",kind:"c",due:"2026-12-22T23:59:00+05:30",open:"2026-12-02T00:00:00+05:30",close:"22 Dec 2026 (opens 2 Dec)",exam:"11 Apr 2027",url:"https://upsc.gov.in",host:"upsc.gov.in"}
 ];
-const PCM="Class 11–12 NCERT Physics, Chemistry and Maths. See the core syllabus in Section D.";
+const PCM="Class 11–12 NCERT Physics, Chemistry and Maths. See the core syllabus in Section E.";
 const EX=[
 /* ENGINEERING */
 {id:"bitsat",cat:"eng",sort:9,n:"BITSAT",full:"Birla Institute of Technology & Science Admission Test",body:"BITS Pilani",st:"e",
@@ -894,6 +938,103 @@ const SOURCES=[
 ["AILET","nationallawuniversitydelhi.in","https://nationallawuniversitydelhi.in"],["IPMAT Indore","iimidr.ac.in","https://www.iimidr.ac.in"],["IPMAT Rohtak","iimrohtak.ac.in","https://www.iimrohtak.ac.in"],
 ["JIPMAT","exams.nta.nic.in/jipmat","https://exams.nta.nic.in/jipmat"],["IIT Madras BS","study.iitm.ac.in","https://study.iitm.ac.in"],["INSPIRE-SHE","online-inspire.gov.in","https://online-inspire.gov.in"]
 ];
+/* ---------- girl candidates: researched Oct 2026 from published sources; confirm in each official brochure ---------- */
+const GSTATS=[
+ ["20%","Women’s share the IITs aim for in every programme, using extra female-only seats"],
+ ["3,814","Female-only seats allotted at IITs in 2026"],
+ ["₹1,600","JEE Advanced fee for girls. Others pay ₹3,200"],
+ ["₹0","NDA application fee for women"]
+];
+/* per-exam badge text and detail shown inside the exam panel */
+const GB={
+ bitsat:"₹500 off fee", nda:"₹0 fee · seats for women", mht:"30% seats", kcet:"30% seats", apeapcet:"33⅓% seats",
+ nest:"Half fee", uceed:"Half fee", clat:"NLU women quotas"
+};
+const GD={
+ bitsat:"Female and transgender candidates pay ₹500 less. One session ₹3,100 instead of ₹3,600. Both sessions ₹4,600 instead of ₹5,600. Adding Session 2 later costs ₹1,500 instead of ₹2,000 (BITSAT 2026 fees).",
+ nda:"Women have been admitted since August 2022. Application fee is nil for women (₹100 for others). A fixed number of vacancies is set aside for women: NDA (II) 2026 listed 24 of 394. Same UPSC written exam and SSB, and no state quotas.",
+ mht:"30% of seats are reserved for female candidates under a Maharashtra government resolution of 17 April 2000. It does not apply under the Defence, PwD and Orphan categories. There is no fee concession for girls: Open pays ₹1,300, reserved categories ₹1,000.",
+ kcet:"One published source lists a 30% horizontal reservation for women inside every category (General, SC, ST, OBC). Confirm the exact rule in the KEA brochure.",
+ apeapcet:"33⅓% horizontal reservation for women across categories in AP EAPCET counselling. Check the domicile and local-area conditions in the APSCHE notification.",
+ nest:"Female candidates of all categories pay ₹700. Male candidates in the unreserved and OBC categories pay ₹1,400 (last cycle’s fee, may change).",
+ uceed:"Female candidates pay ₹2,000. Other Indian candidates pay ₹4,000. Regular last date 31 Oct 2026, late fee window until 6 Nov, 5 PM.",
+ clat:"Several NLUs keep a horizontal quota for women, usually 20 to 33 percent, some limited to the home state. Published lists disagree on exact numbers, so read each NLU’s own brochure before ranking colleges."
+};
+const GFEE=[
+ ["JEE Main, one paper (General)","₹800","₹1,000","₹200","SC/ST/PwD pay ₹500 for everyone"],
+ ["JEE Main, both papers (General)","₹1,600","₹2,000","₹400","B.E./B.Tech and B.Arch together"],
+ ["JEE Advanced","₹1,600","₹3,200","₹1,600","Same ₹1,600 as SC/ST/PwD"],
+ ["BITSAT, one session","₹3,100","₹3,600","₹500","₹4,600 vs ₹5,600 for both sessions"],
+ ["UCEED","₹2,000","₹4,000","₹2,000","Same ₹2,000 as SC/ST/PwD"],
+ ["NEST","₹700","₹1,400","₹700","Last cycle’s fee, vs unreserved male"],
+ ["NDA & NA","₹0","₹100","₹100","SC/ST also exempt"]
+];
+const GGROUPS=[
+ {t:"Seats set aside for girls",cards:[
+  {tag:"IITs",h:"Extra female-only seats through JoSAA",ex:null,
+   pts:["Extra (supernumerary) seats are added on top of the normal intake so that women reach about <strong>20% of every programme</strong>. They do not take seats away from boys.",
+        "You compete in <strong>two lists</strong>: the gender-neutral list and the female-only list. The female-only closing rank is usually more relaxed than the gender-neutral one for the same branch.",
+        "Started in 2018. In 2026, <strong>3,814 female-only seats</strong> were allotted and women were about 20.2% of the 18,861 IIT seats. 10,107 women qualified in JEE Advanced 2026."],
+   src:[["Careerindia","https://www.careerindia.com/news/jee-advanced-2026-female-qualifiers-cross-10-000-six-year-high-066655.html"],["Cracku","https://cracku.in/josaa-iit-2026-seat-matrix/"]]},
+  {tag:"NITs · IIITs · GFTIs",h:"Female-only seats in the JoSAA seat matrix",ex:null,
+   pts:["Every programme and category lists two pools: <strong>Gender-neutral</strong> and <strong>Female-only (including supernumerary)</strong>.",
+        "In 2018 the education ministry asked NITs to add supernumerary seats whenever girls fell below 14%, with targets of 17% in 2019 and 20% in 2020.",
+        "Seat numbers differ by institute and branch, and some institutes show none. Open the JoSAA seat matrix for each college on your list."],
+   src:[["Careers360 report","https://news.careers360.com/mhrd-asks-nits-add-supernumerary-seats-bring-more-gender-diversity"],["CollegeDekho","https://www.collegedekho.com/articles/josaa-seat-matrix/"]]},
+  {tag:"Defence",h:"NDA: women admitted, fixed vacancies, no fee",ex:"nda",
+   pts:["Women have joined the NDA since <strong>August 2022</strong> (148th course). 126 women enrolled across the 148th to 153rd courses.",
+        "A fixed number of vacancies is set for women. The NDA (II) 2026 notice listed <strong>24 of 394</strong>. Check the 2027 notice for the new number.",
+        "Same UPSC written exam and SSB interview as boys, with no state quotas. Application fee: <strong>nil for women</strong>, ₹100 for others."],
+   src:[["PIB","https://www.pib.gov.in/PressReleasePage.aspx?PRID=2112318&reg=48&lang=2"],["PW","https://www.pw.live/defence/exams/nda-application-form"]]},
+  {tag:"State CETs",h:"Women’s quota in Maharashtra, Karnataka and Andhra",ex:"mht",
+   pts:["<strong>MHT CET:</strong> 30% of seats reserved for women (GR of 17 April 2000). Not available under Defence, PwD and Orphan categories.",
+        "<strong>KCET:</strong> 30% horizontal quota inside each category, as listed by one source.",
+        "<strong>AP EAPCET:</strong> 33⅓% horizontal quota across categories.",
+        "State quotas often depend on domicile or local status. Read the state’s own rules before counting on them."],
+   src:[["Collegedunia","https://collegedunia.com/exams/mht-cet/reservation"],["PW (KCET)","https://www.pw.live/state-prep/exams/kcet-reservation-criteria"],["Manabadi","https://www.manabadi.co.in/entrance-exams/ap-eapcet-reservation-and-quota-system-2026/"]]},
+  {tag:"Law",h:"Women’s quota in some NLUs",ex:"clat",
+   pts:["Several NLUs keep a <strong>horizontal quota for women</strong>, mostly around 30%, with RMLNLU at about 20%. Some apply only to the home state’s candidates.",
+        "Published lists disagree on the exact percentage for NLSIU, NALSAR and others, so use each NLU’s brochure as the final word."],
+   src:[["iQuanta","https://www.iquanta.in/blog/clat-reservation-criteria-for-women/"],["Toprankers","https://www.toprankers.com/clat-reservation"]]}
+ ]},
+ {t:"A college only for women",cards:[
+  {tag:"Women-only",h:"IGDTUW, Delhi",ex:null,
+   pts:["State-run women’s technical university at Kashmere Gate. B.Tech through <strong>JEE Main</strong> and JAC Delhi counselling, plus B.Arch and a 6-year B.Tech-MBA.",
+        "2026-27 intake: <strong>1,323 seats</strong>, 85% for Delhi region and 15% outside Delhi.",
+        "NAAC A+, NIRF 2025 engineering band 201–300. First-year B.Tech tuition is about ₹1.68 lakh. Check the current fee on its website."],
+   src:[["Admitkard","https://www.admitkard.com/blog/igdtuw"]]}
+ ]},
+ {t:"Money for your studies",cards:[
+  {tag:"Scholarship",h:"AICTE Pragati scholarship for girls",ex:null,
+   pts:["<strong>₹50,000 a year</strong> as a lump sum, paid by direct bank transfer for tuition, books, computer and living costs. It excludes hostel and medical charges.",
+        "For girls admitted to the <strong>first year</strong> of an AICTE-approved degree or diploma (second year through lateral entry). Family income up to <strong>₹8 lakh</strong>. Maximum 2 girls per family. No other concurrent scholarship.",
+        "Apply on the National Scholarship Portal with eKYC. One listing gives <strong>31 Oct 2026</strong> as the 2026-27 deadline and another says it stays open, so confirm on scholarships.gov.in."],
+   src:[["IndiaScholarships","https://www.indiascholarships.in/scholarships/aicte-pragati-scholarship-for-girl-students"],["Buddy4Study","https://www.buddy4study.com/scholarship/aicte-pragati-scholarship-for-girls"]]}
+ ]}
+];
+const GNONE=[
+ ["NATA","Same fee for everyone in a category (₹1,750 general, ₹1,250 SC/ST/EWS/PwD)."],
+ ["NIFT","Fee is ₹2,000 (open, OBC, EWS) and ₹500 (SC/ST/PwD), with no separate girls’ rate."],
+ ["IISER IAT","₹2,000 general, ₹1,000 SC/ST/PwD. No concession for girls."],
+ ["MHT CET fee","No fee concession for girls. The 30% seat quota is the benefit."]
+];
+function renderGirls(){
+  const host=$("#girlsOut"); if(!host) return;
+  let h='<div class="g-stats">'+GSTATS.map(s=>'<div class="g-stat"><b>'+s[0]+'</b><span>'+s[1]+'</span></div>').join("")+'</div>';
+  GGROUPS.forEach(g=>{
+    h+='<h3 class="sub g-sub">'+g.t+'</h3><div class="g-grid">'+g.cards.map(c=>
+      '<article class="g-card"><div><span class="gb">'+c.tag+'</span></div><h3>'+c.h+'</h3><ul>'+c.pts.map(p=>'<li>'+p+'</li>').join("")+'</ul>'+
+      '<div class="g-foot">'+(c.ex?'<button class="mb" type="button" data-open="'+c.ex+'">See the exam</button>':"")+
+      '<span class="src-n">Source: '+c.src.map(s=>'<a href="'+s[1]+'" target="_blank" rel="noopener">'+s[0]+'</a>').join(", ")+'</span></div></article>').join("")+'</div>';
+    if(g.t==="Seats set aside for girls"){
+      h+='<h3 class="sub g-sub">Lower application fees</h3><div class="scroll g-scroll"><table class="g-t"><thead><tr><th>Exam</th><th>Girls pay</th><th>Others pay</th><th>You save</th><th>Note</th></tr></thead><tbody>'+
+        GFEE.map(r=>'<tr><td>'+r[0]+'</td><td class="gp">'+r[1]+'</td><td>'+r[2]+'</td><td class="gs">'+r[3]+'</td><td class="gn">'+r[4]+'</td></tr>').join("")+'</tbody></table></div>'+
+        '<p class="note">Fees are the latest published structures for India centres and can change. Confirm when each form opens. The JEE Main figures come from the structure listed for the next cycle.</p>';
+    }
+  });
+  h+='<h3 class="sub g-sub">Checked, but no girls-specific benefit</h3><div class="g-none">'+GNONE.map(r=>'<div><b>'+r[0]+'</b><span>'+r[1]+'</span></div>').join("")+'</div>';
+  host.innerHTML=h;
+}
 /* ---------- helpers ---------- */
 const $=(s,r=document)=>r.querySelector(s);
 const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
@@ -970,7 +1111,7 @@ function renderCal(animate){
     const rs=rows.filter(r=>r.g===i); if(!rs.length) return;
     html+='<div class="cal-g"><h3>'+g+'<small>Forms close</small></h3><div class="cal-rows">'+rs.map(r=>
       '<div class="cr'+(r.st==="e"?"":" c")+'">'+stat(r.st)+
-      '<div class="nm">'+r.n+'<small>'+CATNAME[r.cat]+'</small></div>'+
+      '<div class="nm">'+r.n+(r.ex&&GB[r.ex]?' <span class="gb">'+GB[r.ex]+'</span>':"")+'<small>'+CATNAME[r.cat]+'</small></div>'+
       '<div class="fld ap"><i>Apply by</i>'+r.a+'</div><div class="fld ex"><i>Exam</i>'+r.e+'</div>'+
       '<div class="act">'+(r.ex?'<button class="mb" type="button" data-plan="'+r.ex+'" aria-pressed="false">Add to my list</button><a class="mb" href="#exams" data-open="'+r.ex+'">Details</a>':"")+'</div></div>'
     ).join("")+'</div></div>';
@@ -988,12 +1129,12 @@ function fact(c,h,v){ return v?'<div class="fact '+c+'"><h4>'+h+'</h4><p>'+v+'</
 function exCard(x){
   return '<article class="ex" id="ex-'+x.id+'">'+
   '<button class="ex-h" type="button" aria-expanded="false" aria-controls="exb-'+x.id+'" data-ex="'+x.id+'">'+
-  '<span class="ex-t"><span class="n">'+x.n+'</span>'+stat(x.st)+'</span>'+
+  '<span class="ex-t"><span class="n">'+x.n+'</span>'+stat(x.st)+(GB[x.id]?'<span class="gb" title="Benefit for girl candidates">'+GB[x.id]+'</span>':"")+'</span>'+
   '<span class="s">'+x.full+' · '+x.body+'</span><span class="pl" aria-hidden="true">+</span></button>'+
   '<div class="ex-b" id="exb-'+x.id+'" hidden><div class="ex-in">'+
   '<div class="facts">'+fact("ap","Apply",x.apply)+fact("ex","Exam date",x.exam)+fact("fee","Fee",x.fee)+'</div>'+
   '<dl class="spec">'+spec("Leads to",x.leads)+spec("Eligibility",x.elig)+spec("Pattern",x.pattern)+spec("Syllabus",x.syl)+'</dl>'+
-  (x.note?'<div class="callout note"><h4>Good to know</h4><p>'+x.note+'</p></div>':"")+
+  (GD[x.id]?'<div class="callout girl"><h4>For girl candidates</h4><p>'+GD[x.id]+'</p></div>':"")+(x.note?'<div class="callout note"><h4>Good to know</h4><p>'+x.note+'</p></div>':"")+
   '<div class="ex-foot"><a class="mb pri" href="'+x.portal[1]+'" target="_blank" rel="noopener">Official portal: '+x.portal[0]+' ↗</a><button class="mb" type="button" data-plan="'+x.id+'" aria-pressed="false">Add to my list</button></div>'+
   '</div></div></article>';
 }
@@ -1116,7 +1257,7 @@ function startMotion(){
     gs.from(".hero .kicker,.hero .title,.hero .lede,.hero .cta,.next",{y:14,opacity:0,duration:.7,stagger:.08,ease:"power2.out"});
     if(window.ScrollTrigger){
       gs.to("#navProg",{scaleX:1,ease:"none",scrollTrigger:{trigger:document.body,start:"top top",end:"bottom bottom",scrub:.3}});
-      $$(".sh,.syl>div,.two>div,.src,.qz").forEach(el=>gs.from(el,{y:16,opacity:.4,duration:.6,ease:"power2.out",scrollTrigger:{trigger:el,start:"top 105%",once:true}}));
+      $$(".sh,.syl>div,.two>div,.src,.qz,.g-card").forEach(el=>gs.from(el,{y:16,opacity:.4,duration:.6,ease:"power2.out",scrollTrigger:{trigger:el,start:"top 105%",once:true}}));
       gs.from(".ticket",{y:16,opacity:.4,duration:.55,stagger:.05,ease:"power2.out",scrollTrigger:{trigger:"#tickets",start:"top 105%",once:true}});
       $$(".t-num[data-n]").forEach(el=>{
         const n=+el.dataset.n, o={v:0};
@@ -1141,7 +1282,7 @@ renderEx();
 renderCore(); renderMatrix();
 chips($("#carCat"),Object.keys(CAR).map(k=>[k,CAR[k].t]),carKey,k=>{carKey=k;renderCar(true)});
 renderPay(); renderCar(false);
-renderQz(); renderGoals(); syncPlan();
+renderQz(); renderGoals(); renderGirls(); syncPlan();
 if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(()=>{ if(window.ScrollTrigger) ScrollTrigger.refresh() }) }
 startMotion();
 </script>
