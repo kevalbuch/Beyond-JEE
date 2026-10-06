@@ -80,7 +80,7 @@ function renderTickets(){
       if(d<=0){ big="Closed"; unit="check the portal"; txt=" txt" }
       else{ big=String(d); u=" "+urg(d); unit=(d===1?"day left":"days left")+(t.open&&Date.now()<new Date(t.open).getTime()?". Form opens "+shortDate(t.open):"") }
     }
-    return '<article class="due'+(t.kind==="w"?" w":"")+'">'+
+    return '<article class="due'+(t.kind==="w"?" w":"")+(t._live?" live":"")+'">'+
       '<div class="due-n'+u+txt+'"><b>'+big+'</b><small>'+unit+'</small></div>'+
       '<div class="due-b"><h3>'+t.n+stat(t.kind==="w"?"m":"c")+'</h3><p>'+t.sub+'</p></div>'+
       '<dl class="due-f"><div class="cl"><dt>'+(t.kind==="w"?"Form closes":"Last date")+'</dt><dd>'+(t.kind==="w"?t.close:'<span class="hl">'+t.close+'</span>')+'</dd></div><div class="ex"><dt>Exam</dt><dd><span class="hlc">'+t.exam+'</span></dd></div></dl>'+
@@ -112,7 +112,7 @@ function renderCal(animate){
   MONS.forEach(([k,label])=>{
     const rs=rows.filter(r=>closeMonth(r)===k); if(!rs.length) return;
     html+='<section class="mc'+(k===now?" now":"")+'" aria-label="'+label+'"><h3><span>'+label.split(" ")[0]+'<small>'+label.split(" ")[1]+'</small></span>'+(k===now?'<em>This month</em>':'<b>'+rs.length+'</b>')+'</h3><ul>'+
-      rs.map(r=>'<li><button type="button" class="mr '+(r.st==="e"?"e":"c")+'" data-i="'+r.i+'"><span class="dt dt-'+r.st+'"><span class="vh">'+stLabel(r.st)+'</span></span><span class="mn">'+r.sn+(r.ex&&GB[r.ex]?'<i class="gdot" title="Benefit for girl candidates"></i>':"")+'</span><span class="md'+(r.st==="c"?" hl":"")+'">'+r.as+'</span></button></li>').join("")+'</ul></section>';
+      rs.map(r=>'<li><button type="button" class="mr '+(r.st==="e"?"e":"c")+'" data-i="'+r.i+'"><span class="dt dt-'+r.st+'"><span class="vh">'+stLabel(r.st)+'</span></span><span class="mn">'+r.sn+(r.ex&&GB[r.ex]?'<i class="gdot" title="Benefit for girl candidates"></i>':"")+(r._live?'<i class="live-dot" title="Live-verified from the official site"></i>':"")+'</span><span class="md'+(r.st==="c"?" hl":"")+'">'+r.as+'</span></button></li>').join("")+'</ul></section>';
   });
   const host=$("#calOut");
   host.innerHTML=html?'<div class="mgrid" id="mgrid">'+html+'</div>':'<p class="empty">No exams match this filter. Try another field or status.</p>';

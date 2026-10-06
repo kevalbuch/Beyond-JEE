@@ -207,6 +207,10 @@ h1.title{font:800 clamp(2.25rem,4.2vw,3.5rem)/1.02 var(--f-display);letter-spaci
 .btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
 .btn.ghost:hover{background:var(--acc);color:var(--on-acc);border-color:var(--ink)}
 .meta{margin-top:24px;color:var(--dim);font-size:.875rem}
+.live-tag{color:#2E8B57}
+.mn .live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#2E8B57;margin-left:5px;vertical-align:middle}
+.due-n.live .due-f,.due.live .cl dt{color:#2E8B57}
+.due.live .cl dt::after{content:" · live";color:#2E8B57;font-weight:600}
 .count{position:relative;padding-top:8px}
 .count-top{font-size:1.0625rem;font-weight:600;color:var(--lead);margin-bottom:8px}
 .count-n{position:relative;display:inline-block;font:800 clamp(5rem,12vw,8.5rem)/.86 var(--f-display);letter-spacing:-.05em;color:var(--ink);font-variant-numeric:lining-nums;padding:.1em .2em}

@@ -1,0 +1,10 @@
+{
+  "lastReviewed": "2026-10-03T00:00:00+05:30",
+  "exams": {
+    "clat": {"applyClose": "2026-10-31T23:59:00+05:30", "examDate": "2026-12-06", "status": "confirmed", "verifiedOn": "2026-10-03T00:00:00+05:30", "source": "https://consortiumofnlus.ac.in"},
+    "uceed": {"applyClose": "2026-10-31T23:59:00+05:30", "examDate": "2027-01-17", "status": "confirmed", "verifiedOn": "2026-10-03T00:00:00+05:30", "source": "https://www.uceed.iitb.ac.in"},
+    "ailet": {"applyClose": "2026-11-10T23:59:00+05:30", "examDate": "2026-12-13", "status": "confirmed", "verifiedOn": "2026-10-03T00:00:00+05:30", "source": "https://nationallawuniversitydelhi.in"},
+    "nid": {"applyClose": "2026-11-30T23:59:00+05:30", "examDate": "2026-12-20", "status": "confirmed", "verifiedOn": "2026-10-03T00:00:00+05:30", "source": "https://admissions.nid.edu"},
+    "nda": {"applyClose": "2026-12-22T23:59:00+05:30", "examDate": "2027-04-11", "status": "confirmed", "verifiedOn": "2026-10-03T00:00:00+05:30", "source": "https://upsc.gov.in"}
+  }
+}

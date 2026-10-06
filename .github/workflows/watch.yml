@@ -9,6 +9,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 concurrency:
   group: watch-exam-pages
@@ -27,7 +28,7 @@ jobs:
       - name: Check official pages for changes
         run: python3 scripts/watch/check.py
 
-      - name: Commit and push if anything changed
+      - name: Commit and push the notification feed if anything changed
         run: |
           git config user.name "beyond-jee-watch-bot"
           git config user.email "actions@users.noreply.github.com"
@@ -39,3 +40,41 @@ jobs:
             git pull --rebase origin main
             git push
           fi
+
+      # ---------- real exam dates: extract, then ask a human before going live ----------
+      # check.py above only flags "this official page changed" and is safe to
+      # publish straight away. Reading an actual new DATE off a page is
+      # fallible, and a wrong date could make someone miss a deadline — so
+      # this step never writes directly to data/key-dates.json (the file the
+      # live site reads). It only stages a pull request; merging that PR is
+      # what makes a new date go live.
+      - name: Propose exam date updates for review
+        run: python3 scripts/watch/extract_dates.py
+
+      - name: Open a review PR for any proposed date changes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ "$(cat data/pending-date-changes.json 2>/dev/null)" = "[]" ] || [ ! -s data/pending-date-changes.json ]; then
+            echo "No proposed date changes"
+            exit 0
+          fi
+
+          git config user.name "beyond-jee-watch-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git fetch origin main
+          git checkout -B main origin/main
+
+          BRANCH="date-review/$(date -u +%Y%m%d-%H%M%S)"
+          git checkout -b "$BRANCH"
+          cp data/key-dates.proposed.json data/key-dates.json
+          git add data/key-dates.json data/pending-date-changes.json
+          git commit -m "Propose exam date updates from official sources"
+          git push origin "$BRANCH"
+
+          python3 scripts/watch/make_pr_body.py > /tmp/pr-body.md
+          gh pr create \
+            --title "Review: exam date updates ($(date -u +%Y-%m-%d))" \
+            --body-file /tmp/pr-body.md \
+            --base main \
+            --head "$BRANCH"

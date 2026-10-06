@@ -35,7 +35,7 @@
         <a class="btn" href="#soon">See what closes first</a>
         <a class="btn ghost" href="#finder">Find my route</a>
       </div>
-      <p class="meta">Admission cycle 2027. Dates checked on 3 Oct 2026.</p>
+      <p class="meta" id="homeMeta">Admission cycle 2027. Dates checked on <span id="homeCheckedDate">3 Oct 2026</span><span id="homeLiveTag" class="live-tag" hidden> · live-verified</span>.</p>
     </div>
     <aside class="count" aria-live="polite">
       <p class="count-top" id="countTop">Next deadline</p>
@@ -52,7 +52,7 @@
   <section class="view" hidden id="notif">
     <header class="sh">
       <h2>What changed on the official pages</h2>
-      <p class="lede">We watch 18 official exam portals and list anything new we see, with when we last checked. This is an automatic page-change watch, not an official feed — always confirm on the exam’s own site.</p>
+      <p class="lede">We watch 18 official exam portals and list anything new we see, with when we last checked. This is an automatic page-change watch, not an official feed — always confirm on the exam’s own site. When a date on this list looks like it changed, the new date is checked by a person before it updates the deadlines shown elsewhere on this site, so the countdown stays reliable.</p>
     </header>
     <div id="notifMeta" class="nf-meta"></div>
     <div id="notifOut"></div>
@@ -240,5 +240,6 @@
 <script src="/js/app-personalize.js"></script>
 <script src="/js/app-guides.js"></script>
 <script src="/js/app-notify.js"></script>
+<script src="/js/app-live-dates.js"></script>
 </body>
 </html>
