@@ -110,10 +110,10 @@ h1,h2,h3,h4,p,ul,ol,dl,dd,figure{margin:0}
 .cnt{margin-left:auto;min-width:22px;padding:0 7px;border-radius:999px;background:var(--ink);color:var(--paper);font-size:.75rem;font-weight:700;line-height:20px;text-align:center}
 .cnt.cnt-red{background:var(--red)}
 /* notification bell */
+.notif-bell{position:relative}
 .notif-bell-float{position:fixed;top:max(18px,env(safe-area-inset-top,0px));right:max(18px,env(safe-area-inset-right,0px));z-index:56;width:40px;height:40px;border-radius:50%;border:1px solid var(--rule);background:var(--sheet);color:var(--lead);display:grid;place-items:center;transition:border-color .15s,color .15s}
 .notif-bell-float:hover{border-color:var(--pen);color:var(--pen)}
 .notif-bell svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.notif-bell{position:relative}
 .notif-bell .cnt{position:absolute;top:-5px;right:-5px;min-width:17px;height:17px;padding:0 4px;line-height:17px;font-size:.6875rem;border:2px solid var(--paper)}
 @media (min-width:860px){.notif-bell-inline{display:none}}
 @media (max-width:859px){.notif-bell-float{display:none}}
