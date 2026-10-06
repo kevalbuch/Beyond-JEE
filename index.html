@@ -504,9 +504,60 @@ footer{padding-block:48px 120px;max-width:72ch}
 .flash{animation:fl 1.4s ease-out}
 @keyframes fl{0%{box-shadow:0 0 0 4px var(--pen-line)}100%{box-shadow:0 0 0 4px transparent}}
 @media (prefers-reduced-motion:reduce){.flash{animation:none}body{transition:none}}
-@media print{.side,.tabs,.totop,.srch,.sheet{display:none!important}}
+
 @media (max-width:859px){.totop{bottom:calc(80px + env(safe-area-inset-bottom,0px))}}
 @media (min-width:760px){.sheet{align-items:center}.sheet-card{border-bottom:1px solid var(--ink);border-radius:20px;padding:28px}}
+
+/* personalised home, share, print */
+.fy{margin-top:40px;padding:clamp(18px,3vw,28px);border:1px solid var(--ink);border-radius:20px;background:var(--sheet)}
+.fy.fy-pink{border-color:var(--pink)}
+.fy-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px}
+.fy-h h2{font:700 1.5rem/1.1 var(--f-display);letter-spacing:-.02em}
+.fy-h p{margin:0;color:var(--dim);font-size:.9375rem}
+.fy-edit{margin-left:8px;padding:2px 10px;border:1px solid var(--rule);border-radius:6px;background:transparent;color:var(--ink);font-size:.8125rem;font-weight:600}
+.fy-edit:hover{border-color:var(--ink)}
+.fy-q{display:grid;gap:8px;margin-top:18px}
+.fy-q>b{font-weight:600}.fy-opt{font-weight:400;color:var(--dim);font-size:.875rem;margin-left:6px}
+.fy-q .chips{margin:0}
+.fy-go{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.mb:disabled{opacity:.45;cursor:not-allowed}
+.fy-cols{display:grid;gap:24px 40px;margin-top:16px}
+@media (min-width:820px){.fy-cols{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.fy-cols h3{font:700 1rem/1.2 var(--f-display);margin-bottom:6px}
+.fy-r{display:grid;grid-template-columns:5rem minmax(0,1fr) auto;gap:4px 12px;align-items:baseline;width:100%;padding:11px 0;border:0;border-top:1px solid var(--rule);background:transparent;color:var(--ink);text-align:left}
+.fy-r .d{font-weight:700;font-variant-numeric:tabular-nums}
+.fy-r .d.hl{justify-self:start;padding:0 8px;border-radius:4px;background:var(--acc);color:var(--on-acc)}
+.fy-r .n{font-weight:600}
+.fy-r .e{color:var(--dim);font-size:.875rem}
+.fy-r:hover .n{text-decoration:underline}
+.fy-gc{align-self:start;padding:14px 16px;border:1px solid var(--pink-line);border-radius:12px;background:var(--pink-soft)}
+.fy-gc h3{color:var(--pink-deep)}
+.fy-gr{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:4px 12px;padding:9px 0;border-top:1px solid var(--pink-line);color:var(--ink);text-decoration:none;font-weight:600}
+.fy-gr:hover span:first-child{text-decoration:underline}
+.fy-gc .gm{background:var(--pink-mark)}
+.fy-more{display:inline-block;margin-top:10px;font-weight:600;font-size:.9375rem;color:var(--ink);text-underline-offset:3px}
+.fy-ex{margin:6px 0 0}
+.fy-slim{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-radius:14px;border-style:dashed}
+.fy-slim p{margin:0;color:var(--lead)}
+.take{margin-top:24px;padding:24px 0;border-block:1px solid var(--rule)}
+.take h3{font:700 1.375rem/1.15 var(--f-display);letter-spacing:-.015em}
+.take .note{margin:6px 0 0;max-width:60ch}
+.take-b{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.psheet{display:none}
+@media print{
+  @page{margin:14mm}
+  body>*:not(.psheet){display:none!important}
+  html,body{background:#fff!important}
+  .psheet{display:block!important;color:#000;font:11pt/1.35 "Instrument Sans",Arial,sans-serif}
+  .psheet h1{font:700 22pt/1.1 "Bricolage Grotesque",Arial,sans-serif;margin:0 0 4px}
+  .ps-s{margin:0 0 14px;color:#444;font-size:10pt}
+  .psheet table{width:100%;border-collapse:collapse}
+  .psheet th{text-align:left;font-size:9pt;border-bottom:2px solid #000;padding:5px 6px}
+  .psheet td{vertical-align:top;border-bottom:1px solid #999;padding:7px 6px;font-size:10pt;word-break:break-word}
+  .psheet small{color:#444;font-size:8.5pt}
+  .psheet td.bx{font-size:16pt;text-align:center}
+  .ps-f{margin-top:14px;font-size:9pt;color:#333}
+}
 </style>
 </head>
 <body>
@@ -541,6 +592,7 @@ footer{padding-block:48px 120px;max-width:72ch}
       <ul class="count-next" id="countNext"></ul>
     </aside>
   </header>
+  <section class="fy" id="forYou" aria-label="For you"></section>
   <h2 class="home-h">Where to next</h2>
   <div class="tiles" id="tiles"></div>
   </section>
@@ -630,9 +682,18 @@ footer{padding-block:48px 120px;max-width:72ch}
       <p class="lede">Add exams from the calendar, the exam list or the route finder. Your list stays in this browser.</p>
     </header>
     <div id="planOut"></div>
-    <div class="rem">
-      <p><b>Get reminders.</b> Download the dates for the exams on your list as a calendar file for Google Calendar, Apple Calendar or Outlook. Confirmed dates set alarms 7 days and 1 day before. Projected exams get a “check the portal” reminder only.</p>
-      <button class="mb pri" type="button" id="icsBtn">Download reminders (.ics)</button>
+    <div class="take">
+      <h3>Take your list with you</h3>
+      <p class="note">Send it to yourself on WhatsApp so the dates sit in your chat, share it with a parent, or print it as a one-page PDF.</p>
+      <div class="take-b">
+        <button class="mb pri" type="button" data-share="wa">Share on WhatsApp</button>
+        <button class="mb" type="button" data-share="mail">Email</button>
+        <button class="mb" type="button" data-share="copy">Copy text</button>
+        <button class="mb" type="button" data-share="native" hidden>More apps</button>
+        <button class="mb" type="button" data-share="print">Print or save as PDF</button>
+        <button class="mb" type="button" id="icsBtn">Calendar file (.ics)</button>
+      </div>
+      <p class="note">The calendar file adds the dates to Google, Apple or Outlook Calendar with alarms 7 days and 1 day before. Projected exams only get a “check the portal” reminder.</p>
     </div>
     <div class="two">
       <div>
@@ -1609,9 +1670,9 @@ goView((location.hash||"#home").slice(1),{push:false,scroll:false});
   }
   $("#icsBtn").addEventListener("click",e=>{
     const b=e.currentTarget;
-    if(!plan.length){ b.textContent="Add exams to your list first"; setTimeout(()=>{b.textContent="Download reminders (.ics)"},2200); return }
+    if(!plan.length){ b.textContent="Add exams to your list first"; setTimeout(()=>{b.textContent="Calendar file (.ics)"},2200); return }
     const ok=downloadIcs(plan,"beyond-jee-reminders.ics");
-    b.textContent=ok?"Downloaded":"No dates for these exams"; setTimeout(()=>{b.textContent="Download reminders (.ics)"},2200);
+    b.textContent=ok?"Downloaded":"No dates for these exams"; setTimeout(()=>{b.textContent="Calendar file (.ics)"},2200);
   });
   document.addEventListener("click",e=>{
     const r=e.target.closest("[data-ics]"); if(!r) return;
@@ -1728,6 +1789,124 @@ goView((location.hash||"#home").slice(1),{push:false,scroll:false});
   function onScroll(){ tt.classList.toggle("on",window.scrollY>700) }
   window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
   tt.addEventListener("click",()=>window.scrollTo({top:0,behavior:reduce?"auto":"smooth"}));
+})();
+/* ---------- personalised home, sharing and print ---------- */
+(function(){
+  const KEY="bj-prof";
+  let prof=null, draft={g:null,i:[]}, editing=false;
+  try{ const raw=localStorage.getItem(KEY); if(raw){ const p=JSON.parse(raw); if(p&&typeof p==="object"){ prof={g:["f","m","x"].includes(p.g)?p.g:"x",i:Array.isArray(p.i)?p.i.filter(k=>CATNAME[k]):[],skip:!!p.skip} } } }catch(e){}
+  function saveProf(){ try{ localStorage.setItem(KEY,JSON.stringify(prof)) }catch(e){} }
+  const GL={f:"Girl",m:"Boy",x:"Skip"};
+  function cats(){ return prof&&prof.i.length?prof.i:TABS.map(t=>t[0]) }
+  function nowIdx(){ const i=MONS.findIndex(m=>m[0]===nowMon()); return i<0?0:i }
+  function chip(k,l,on){ return '<button type="button" class="chip" data-k="'+k+'" aria-pressed="'+on+'">'+l+'</button>' }
+
+  function setupHtml(){
+    return '<div class="fy-h"><h2>Make this home yours</h2><p>Two quick picks. They stay in this browser.</p></div>'+
+    '<div class="fy-q"><b>I am a</b><div class="chips" data-q="g">'+[["f","Girl"],["m","Boy"],["x","Prefer not to say"]].map(([k,l])=>chip(k,l,draft.g===k)).join("")+'</div></div>'+
+    '<div class="fy-q"><b>I am drawn to <span class="fy-opt">pick any, or none</span></b><div class="chips" data-q="i">'+TABS.map(([k,l])=>chip(k,l,draft.i.includes(k))).join("")+'</div></div>'+
+    '<div class="fy-go"><button class="mb pri" type="button" data-fy="save"'+(draft.g?"":" disabled")+'>Show my home</button>'+(prof?'<button class="mb" type="button" data-fy="cancel">Cancel</button>':'<button class="mb" type="button" data-fy="skip">Not now</button>')+'</div>';
+  }
+  function who(){
+    const a=[]; if(prof.g==="f") a.push("Girl"); else if(prof.g==="m") a.push("Boy");
+    a.push(prof.i.length?prof.i.map(k=>CATNAME[k]).join(", "):"All fields"); return a.join(" · ");
+  }
+  function viewHtml(){
+    const cs=cats(), ni=nowIdx();
+    const rows=CAL.map((r,i)=>Object.assign({i},r)).filter(r=>cs.includes(r.cat)&&MONS.findIndex(m=>m[0]===closeMonth(r))>=ni).slice(0,4);
+    const left='<div><h3>Closing next in your areas</h3>'+(rows.length?rows.map(r=>'<button type="button" class="fy-r" data-fyi="'+r.i+'"><span class="d'+(r.st==="c"?" hl":"")+'">'+r.as+'</span><span class="n">'+r.sn+(r.ex&&GB[r.ex]?'<i class="gdot" title="Benefit for girl candidates"></i>':"")+'</span><span class="e">'+(/^See/.test(r.es)?r.es:"exam "+r.es)+'</span></button>').join(""):'<p class="empty">Nothing closing in these fields right now. Edit your picks to add more.</p>')+'</div>';
+    let right;
+    if(prof.g==="f"){
+      const gb=EX.filter(x=>cs.includes(x.cat)&&GB[x.id]).slice(0,4);
+      right='<div class="fy-gc"><h3>Benefits for girls in your areas</h3>'+gb.map(x=>'<a class="fy-gr" href="#exams" data-open="'+x.id+'"><span>'+x.n+'</span><span class="gm">'+GB[x.id]+'</span></a>').join("")+
+        (cs.includes("eng")?'<a class="fy-gr" href="#girls" data-go="girls"><span>JoSAA: IITs, NITs, IIITs</span><span class="gm">Female-only seats</span></a>':"")+
+        (gb.length||cs.includes("eng")?"":'<p class="empty">No girls-specific benefit found in these fields. See every benefit under For girls.</p>')+
+        '<a class="fy-more" href="#girls" data-go="girls">All benefits for girls</a></div>';
+    }else{
+      const xs=EX.filter(x=>cs.includes(x.cat)).slice(0,10);
+      right='<div><h3>Exams in your areas</h3><div class="chips fy-ex">'+xs.map(x=>'<a class="chip" href="#exams" data-open="'+x.id+'">'+x.n+'</a>').join("")+'</div><a class="fy-more" href="#exams" data-go="exams">Open all exams</a></div>';
+    }
+    return '<div class="fy-h"><h2>For you</h2><p>'+who()+' <button type="button" class="fy-edit" data-fy="edit">Edit</button></p></div><div class="fy-cols">'+left+right+'</div>';
+  }
+  function renderFor(){
+    const host=$("#forYou"); if(!host) return;
+    host.classList.toggle("fy-pink",!!prof&&prof.g==="f"&&!editing);
+    if(prof&&prof.skip&&!editing){ host.hidden=false; host.className="fy fy-slim"; host.innerHTML='<p>Show deadlines and benefits that fit you.</p><button class="mb" type="button" data-fy="edit">Personalise this page</button>'; return }
+    host.className="fy"+(prof&&prof.g==="f"&&!editing?" fy-pink":"");
+    host.innerHTML=(!prof||editing)?setupHtml():viewHtml();
+  }
+  document.addEventListener("click",e=>{
+    const t=e.target;
+    const row=t.closest("[data-fyi]"); if(row){ openCalRow(+row.dataset.fyi); return }
+    const f=t.closest("[data-fy]");
+    if(f){
+      const a=f.dataset.fy;
+      if(a==="edit"){ editing=true; draft={g:prof&&prof.g!=="x"||prof&&!prof.skip?prof.g:null,i:prof?prof.i.slice():[]}; renderFor() }
+      else if(a==="cancel"){ editing=false; renderFor() }
+      else if(a==="skip"){ prof={g:"x",i:[],skip:true}; saveProf(); renderFor() }
+      else if(a==="save"&&draft.g){ prof={g:draft.g,i:draft.i.slice()}; editing=false; saveProf(); renderFor() }
+      return;
+    }
+    const c=t.closest("#forYou .chips[data-q] .chip"); if(c){
+      const q=c.parentNode.dataset.q, k=c.dataset.k;
+      if(q==="g") draft.g=k; else draft.i=draft.i.includes(k)?draft.i.filter(x=>x!==k):draft.i.concat(k);
+      $$(".chip",c.parentNode).forEach(b=>b.setAttribute("aria-pressed",q==="g"?b.dataset.k===draft.g:draft.i.includes(b.dataset.k)));
+      const s=$('[data-fy="save"]'); if(s) s.disabled=!draft.g;
+    }
+  });
+  renderFor();
+
+  /* ---------- share and print my list ---------- */
+  const CHECKED="3 Oct 2026";
+  function items(){
+    return plan.map(exById).filter(Boolean).map(x=>{ const rs=CAL.filter(r=>r.ex===x.id); return {x,rs,k:rs.length?CAL.indexOf(rs[0]):999} }).sort((a,b)=>a.k-b.k);
+  }
+  function stNote(st){ return st==="c"?"confirmed":st==="m"?"exam date set, form expected":"expected, not announced" }
+  function host(x){ return x.portal[0] }
+  function listText(){
+    const it=items(), L=["My exam list · Beyond JEE (dates checked "+CHECKED+")",""];
+    it.forEach((o,n)=>{
+      L.push((n+1)+". "+o.x.n);
+      if(o.rs.length) o.rs.forEach(r=>L.push("   "+(o.rs.length>1?r.sn+": ":"")+"forms close "+r.as+", exam "+(/^See/.test(r.es)?"dates on the KL site":r.es)+" ("+stNote(r.st)+")"));
+      else L.push("   Forms: "+o.x.apply);
+      if(prof&&prof.g==="f"&&GB[o.x.id]) L.push("   Girls: "+GB[o.x.id]);
+      L.push("   Apply only on: "+host(o.x));
+    });
+    L.push("","~ means projected from last year. Confirm every date on the official portal before you apply.");
+    if(/^https?:/.test(location.protocol)) L.push(location.origin+location.pathname);
+    return L.join("\n");
+  }
+  function flash(b,msg){ const t=b.dataset.t||b.textContent; b.dataset.t=t; b.textContent=msg; clearTimeout(b._to); b._to=setTimeout(()=>{ b.textContent=t },2200) }
+  function copyText(s){
+    if(navigator.clipboard&&navigator.clipboard.writeText) return navigator.clipboard.writeText(s);
+    return new Promise((ok,no)=>{ const ta=document.createElement("textarea"); ta.value=s; ta.style.cssText="position:fixed;opacity:0"; document.body.appendChild(ta); ta.select(); try{ document.execCommand("copy")?ok():no() }catch(e){ no(e) } ta.remove() });
+  }
+  function buildPrint(){
+    const it=items(), d=new Date().toLocaleDateString("en-IN",{day:"numeric",month:"long",year:"numeric",timeZone:"Asia/Kolkata"});
+    let ps=$("#printSheet"); if(!ps){ ps=document.createElement("div"); ps.id="printSheet"; ps.className="psheet"; document.body.appendChild(ps) }
+    ps.innerHTML='<h1>My exam list</h1><p class="ps-s">Beyond JEE · printed '+d+' · dates checked '+CHECKED+'</p>'+
+     '<table><thead><tr><th>Exam</th><th>Forms close</th><th>Exam date</th><th>Apply only on</th><th>Applied</th></tr></thead><tbody>'+
+     it.map(o=>{
+       const rs=o.rs.length?o.rs:[{sn:"",as:o.x.apply,es:o.x.exam,st:o.x.st}];
+       return '<tr><td><b>'+o.x.n+'</b><br><small>'+o.x.full+'</small>'+(prof&&prof.g==="f"&&GB[o.x.id]?'<br><small>Girls: '+GB[o.x.id]+'</small>':"")+'</td>'+
+        '<td>'+rs.map(r=>(rs.length>1?r.sn+": ":"")+r.as+'<br><small>'+stNote(r.st)+'</small>').join('<br>')+'</td>'+
+        '<td>'+rs.map(r=>(rs.length>1?r.sn+": ":"")+r.es).join('<br>')+'</td>'+
+        '<td>'+o.x.portal[1].replace(/^https?:\/\//,"")+'</td><td class="bx">☐</td></tr>';
+     }).join("")+'</tbody></table>'+
+     '<p class="ps-f">~ means projected from last year and can move by weeks. Confirm every date and fee in the official brochure before you apply. Apply only on the official portal.</p>';
+  }
+  document.addEventListener("click",e=>{
+    const b=e.target.closest("[data-share]"); if(!b) return;
+    const a=b.dataset.share;
+    if(!plan.length){ flash(b,"Add exams first"); return }
+    const txt=listText();
+    if(a==="wa") window.open("https://wa.me/?text="+encodeURIComponent(txt),"_blank","noopener");
+    else if(a==="mail") location.href="mailto:?subject="+encodeURIComponent("My exam list · Beyond JEE")+"&body="+encodeURIComponent(txt);
+    else if(a==="copy") copyText(txt).then(()=>flash(b,"Copied"),()=>flash(b,"Copy failed"));
+    else if(a==="native"){ navigator.share({title:"My exam list · Beyond JEE",text:txt}).catch(()=>{}) }
+    else if(a==="print"){ buildPrint(); setTimeout(()=>window.print(),60) }
+  });
+  if(navigator.share){ const n=$('[data-share="native"]'); if(n) n.hidden=false }
 })();
 </script>
 </body></html>
