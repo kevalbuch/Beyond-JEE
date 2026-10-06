@@ -2,24 +2,21 @@
 """
 Tries to read a specific application-deadline or exam date off each official
 portal that has an `examId` in sources.json, and — if what it finds differs
-from data/key-dates.json — stages the change for a human to review, instead
-of publishing it straight to the live site.
+from data/key-dates.json — writes the update for the calling workflow to
+commit straight to main, which is what the live site reads at runtime
+(js/app-live-dates.js).
 
-This never writes data/key-dates.json directly. It writes:
-  - data/key-dates.proposed.json: what key-dates.json would become if every
-    staged proposal were accepted (the file a reviewer can diff against).
-  - data/pending-date-changes.json: the list of individual proposals, each
-    with the source excerpt it was read from, so a human can sanity-check
-    it in seconds rather than trusting the regex.
+Writes two files:
+  - data/key-dates.proposed.json: what key-dates.json should become —
+    the calling workflow copies this over key-dates.json and commits it.
+  - data/pending-date-changes.json: the list of individual changes found
+    this run, each with the source excerpt it was read from, for the
+    commit message / an audit trail.
 
-The calling workflow (.github/workflows/watch.yml) opens a pull request
-from these files when pending-date-changes.json is non-empty; merging that
-PR is what actually updates data/key-dates.json and makes the new date go
-live on the site. Nothing here ever pushes to main directly.
-
-Like check.py, this was written defensively (per-source try/except,
-timeouts, conservative matching that would rather miss an update than
-propose a wrong one) because it was authored without live network access
+Only acts when it finds an explicit day+month+year next to a deadline or
+exam-date phrase — no year, no change, since a wrong date is worse than a
+stale one. Like check.py, this was written defensively (per-source
+try/except, timeouts) because it was authored without live network access
 to the real portals — the Actions runner is the first place it actually
 fetches them.
 """
