@@ -226,45 +226,48 @@ h3{font-weight:600}
 .seg .chip[aria-pressed="true"]{background:var(--acc);color:var(--on-acc)}
 .legend{display:flex;flex-wrap:wrap;gap:8px 16px;margin:0 0 0 auto;color:var(--dim);font-size:.8125rem;align-items:center}
 .legend span{display:inline-flex;align-items:center}
-.cal2-head{display:none}
-.cal2-g{margin-top:8px}
-.cal2-g>h3{position:sticky;top:0;z-index:3;display:flex;align-items:center;gap:10px;margin:0;padding:14px 8px 10px;background:var(--paper);border-bottom:2px solid var(--ink);font:700 1.25rem/1.1 var(--f-display);letter-spacing:-.015em}
-.cal2-g>h3 small{font:600 .75rem var(--f-body);letter-spacing:0;color:var(--dim);padding:1px 8px;border:1px solid var(--rule);border-radius:999px}
-.cr2{border-bottom:1px solid var(--rule)}
-.cr2>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:14px minmax(0,1fr) 20px;grid-template-areas:"dt n c" ". d d";gap:6px 12px;align-items:center;padding:14px 8px;transition:background-color .15s}
-.cr2>summary::-webkit-details-marker{display:none}
-.cr2>summary:hover{background:var(--soft)}
-.dt{grid-area:dt;width:12px;height:12px;border-radius:50%;border:2px solid var(--dim);box-sizing:border-box}
+.mgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:stretch}
+@media (min-width:1100px){.mgrid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.mc{display:flex;flex-direction:column;padding:14px 12px 10px;border:1px solid var(--ink);border-radius:16px;background:var(--sheet);min-width:0}
+.mc.now{border-width:2px;background:var(--mark-soft)}
+.mc h3{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 4px 8px;font:800 1.375rem/1.1 var(--f-display);letter-spacing:-.02em}
+.mc h3 small{margin-left:8px;font:600 .8125rem var(--f-body);letter-spacing:0;color:var(--dim)}
+.mc h3 b{min-width:24px;padding:0 8px;border-radius:999px;background:var(--ink);color:var(--paper);font:700 .75rem/22px var(--f-body);text-align:center}
+.mc h3 em{font:700 .6875rem/1 var(--f-body);padding:5px 9px;border-radius:999px;background:var(--acc);color:var(--on-acc)}
+.mc ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.mr{display:grid;grid-template-columns:12px minmax(0,1fr) auto;align-items:center;gap:9px;width:100%;padding:5px 8px;border:0;border-radius:9px;background:none;text-align:left;font-size:.9375rem;transition:background-color .12s,transform .12s}
+.mr:hover,.mr:focus-visible{background:var(--acc);color:var(--on-acc)}
+.mr:hover .dt{border-color:#000}.mr:hover .dt-c{background:#000}.mr:hover .md{color:#000}
+.mn{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mr.e .mn{font-weight:500}
+.md{font-size:.8125rem;font-weight:600;white-space:nowrap}
+.mr.e .md{color:var(--dim);font-weight:500}
+.md.hl{background:var(--acc);color:var(--on-acc);padding:1px 7px;margin:0;border-radius:6px}
+.mr:hover .md.hl{background:#000;color:var(--acc)}
+.gdot{display:inline-block;width:7px;height:7px;margin-left:6px;border-radius:50%;background:var(--pink);vertical-align:middle}
+.dt{width:12px;height:12px;border-radius:50%;border:2px solid var(--dim);box-sizing:border-box}
 .dt-c{background:var(--green);border-color:var(--green)}
 .dt-m{border-color:var(--orange);background:conic-gradient(var(--orange) 0 50%,transparent 50% 100%)}
-.cr2-n{grid-area:n;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;min-width:0}
-.cr2-n b{font-weight:700;font-size:1.0625rem;line-height:1.3}
-.cr2-n small{font-size:.8125rem;color:var(--dim)}
-.gm-s{padding:0 8px;font-size:.6875rem;line-height:1.6}
-.cr2-d{grid-area:d;display:flex;gap:24px;font-size:.9375rem}
-.cr2-d>span{display:flex;flex-direction:column;min-width:0}
-.cr2-d i{font-style:normal;font-size:.6875rem;font-weight:700;color:var(--dim)}
-.cr2.c .cr2-d{font-weight:600}
-.cr2.e .cr2-d{color:var(--dim)}
-.cr2-d .v{align-self:flex-start}
-.cr2-d .v.hl{background:var(--acc);color:var(--on-acc);padding:0 8px;margin:0;border-radius:6px}
-.cr2-c{grid-area:c;width:8px;height:8px;border-right:2px solid var(--dim);border-bottom:2px solid var(--dim);transform:rotate(45deg);transition:transform .2s;justify-self:center}
-.cr2[open] .cr2-c{transform:rotate(225deg)}
-.cr2-b{display:grid;gap:8px;padding:4px 8px 18px 34px;color:var(--lead);font-size:.9375rem}
-.cr2-b p b{display:block;font-size:.75rem;font-weight:700;color:var(--dim)}
-.cr2-b .gp{padding:8px 12px;border-radius:10px;background:var(--pink-soft)}
-.cr2-b .gp b{color:var(--pink)}
-.cr2-b .act{display:flex;gap:8px;flex-wrap:wrap;padding-top:4px}
-@media (max-width:859px){.cal2-g>h3{top:57px}}
-@media (min-width:760px){
-  .cal2-head,.cr2>summary{grid-template-columns:14px minmax(0,1fr) 120px 150px 20px;grid-template-areas:"dt n cl ed c";gap:12px 16px}
-  .cal2-head{display:grid;padding:12px 8px 0;font-size:.75rem;font-weight:700;color:var(--dim)}
-  .cal2-head span:nth-child(2){grid-column:2}
-  .cr2-d{display:contents}
-  .cr2-d>span:first-child{grid-area:cl}.cr2-d>span:last-child{grid-area:ed}
-  .cr2-d i{display:none}
+.swipe{display:none;margin:8px 0 0;text-align:center;color:var(--dim);font-size:.8125rem}
+#cal.view{max-width:1240px}
+#cal .sh{margin-bottom:16px;gap:4px 48px}
+#cal .sh h2{font-size:clamp(1.75rem,3vw,2.25rem)}
+#cal .sh .lede{font-size:.9375rem}
+.cal2-bar{margin-bottom:16px}
+.cs-h{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding-right:48px}
+.cs-h h3{font:800 clamp(1.5rem,4vw,2rem)/1.1 var(--f-display);letter-spacing:-.02em}
+.cs-s{color:var(--dim);margin:2px 0 16px}
+.cs-f{margin-bottom:16px}
+.sheet-x{position:absolute;top:12px;right:12px;display:grid;place-items:center;width:40px;height:40px;border:1px solid var(--ink);border-radius:50%;background:var(--sheet);font-size:1.5rem;line-height:1}
+.sheet-x:hover{background:var(--acc);color:var(--on-acc)}
+@media (min-width:760px){.sheet{align-items:center}.sheet-card{border-bottom:1px solid var(--ink);border-radius:20px;padding:28px}}
+@media (min-width:760px){.cs-f{grid-template-columns:1fr 1fr}}
+@media (max-width:759px){
+  .mgrid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:-16px;padding:2px 16px 8px;scrollbar-width:none}
+  .mgrid::-webkit-scrollbar{display:none}
+  .mc{flex:0 0 84%;scroll-snap-align:center}
+  .swipe{display:block}
 }
-@media (min-width:760px) and (max-width:1000px){.cal2-head,.cr2>summary{grid-template-columns:14px minmax(0,1fr) 90px 120px 20px}}
 .mb{padding:8px 14px;border:1px solid var(--rule);background:var(--sheet);border-radius:8px;font-size:.875rem;font-weight:500;text-decoration:none;white-space:nowrap;color:var(--ink);transition:border-color .15s,color .15s,background-color .15s}
 .mb:hover{border-color:var(--pen);color:var(--pen)}
 .mb[aria-pressed="true"]{background:var(--mark);border-color:var(--ink);color:var(--ink)}
@@ -503,6 +506,7 @@ footer{padding-block:48px 120px;max-width:72ch}
 @media (prefers-reduced-motion:reduce){.flash{animation:none}body{transition:none}}
 @media print{.side,.tabs,.totop,.srch,.sheet{display:none!important}}
 @media (max-width:859px){.totop{bottom:calc(80px + env(safe-area-inset-bottom,0px))}}
+@media (min-width:760px){.sheet{align-items:center}.sheet-card{border-bottom:1px solid var(--ink);border-radius:20px;padding:28px}}
 </style>
 </head>
 <body>
@@ -557,9 +561,10 @@ footer{padding-block:48px 120px;max-width:72ch}
     <div class="cal2-bar">
       <label class="sel-w"><span class="vh">Field</span><select class="sel" id="calCatSel" aria-label="Filter by field"></select></label>
       <div class="seg" id="calSt" role="group" aria-label="Filter by status"></div>
-      <p class="legend" aria-label="Legend"><span><span class="sd sd-c"><i></i>Confirmed</span></span><span><span class="sd sd-m"><i></i>Date set</span></span><span><span class="sd sd-e"><i></i>Expected</span></span><span class="tilde">~ projected from last year</span></p>
+      <p class="legend" aria-label="Legend"><span><span class="sd sd-c"><i></i>Confirmed</span></span><span><span class="sd sd-m"><i></i>Date set</span></span><span><span class="sd sd-e"><i></i>Expected</span></span><span class="tilde">~ projected from last year</span><span><i class="gdot" style="margin:0 6px 0 0"></i>girls benefit</span></p>
     </div>
     <div id="calOut"></div>
+    <p class="swipe">Swipe sideways for the next months</p>
   </section>
 
   <section class="view" hidden id="exams">
@@ -662,6 +667,10 @@ footer{padding-block:48px 120px;max-width:72ch}
   <div class="sheet-bg" data-closemore></div>
   <div class="sheet-card"><h3>More</h3><div class="more-list"><a href="#soon" data-s="soon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-clock"/></svg>Closing soon</a><a href="#syllabus" data-s="syllabus"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg>Syllabus</a><a href="#careers" data-s="careers"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-brief"/></svg>Careers</a><a href="#finder" data-s="finder"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-compass"/></svg>Find my route</a><a href="#plan" data-s="plan"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-list"/></svg>My list</a><a href="#sources" data-s="sources"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-link"/></svg>Official portals</a></div></div>
 </div>
+<div class="sheet" id="calSheet" hidden role="dialog" aria-modal="true" aria-label="Exam dates">
+  <div class="sheet-bg" data-closecal></div>
+  <div class="sheet-card" id="calSheetIn" tabindex="-1"></div>
+</div>
 <div class="srch" id="srch" hidden role="dialog" aria-modal="true" aria-label="Search the guide">
   <div class="srch-box">
     <input id="srchIn" type="search" placeholder="Search exams, fees, quotas, careers" autocomplete="off" aria-label="Search the guide" aria-controls="srchOut">
@@ -679,37 +688,37 @@ const GROUPS=["Oct 2026","Oct–Nov 2026","Nov 2026","Dec 2026","Dec 2026 – Ja
 
 /* st: c confirmed, m exam date confirmed and form expected, e expected */
 const CAL=[
-{as:"31 Oct",es:"6 Dec",g:0,n:"CLAT 2027",cat:"law",a:"3 Aug – 31 Oct 2026",e:"6 Dec 2026, 2–4 PM, offline",st:"c",ex:"clat"},
-{as:"31 Oct",es:"17 Jan",g:0,n:"UCEED 2027",cat:"des",a:"1–31 Oct 2026. Late fee to 6 Nov, 5 PM",e:"17 Jan 2027, 9 AM–12 noon",st:"c",ex:"uceed"},
-{as:"~Nov",es:"22–30 Jan",g:1,n:"JEE Main 2027 Session 1",cat:"eng",a:"Expected to open in the last week of Oct, close in Nov",e:"22–24 and 28–30 Jan 2027 (31 Jan buffer)",st:"m"},
-{as:"10 Nov",es:"13 Dec",g:2,n:"AILET 2027",cat:"law",a:"7 Aug – 10 Nov 2026",e:"13 Dec 2026, 2–4 PM, offline",st:"c",ex:"ailet"},
-{as:"30 Nov",es:"20 Dec",g:2,n:"NID DAT 2027",cat:"des",a:"10 Sep – 30 Nov 2026. Edit window 1–3 Dec",e:"Prelims 20 Dec 2026",st:"c",ex:"nid"},
-{as:"2 Dec",es:"See KL site",g:3,n:"KLEEE 2027 (KL University)",cat:"eng",a:"18 Sep – 2 Dec 2026, first phase (reported by an aggregator)",e:"Per KL schedule. Verify on kluniversity.in",st:"e"},
-{as:"22 Dec",es:"11 Apr",g:3,n:"NDA & NA (I) 2027",cat:"def",a:"2–22 Dec 2026",e:"11 Apr 2027 (Sun)",st:"c",ex:"nda"},
-{as:"~Dec",es:"10 Jan",g:4,n:"NIFT 2027",cat:"des",a:"Expected Nov–Dec 2026",e:"10 Jan 2027 (NTA calendar)",st:"m",ex:"nift"},
-{as:"~Feb",es:"~Apr",g:5,n:"KEAM 2027",cat:"state",a:"2026 ref: 5 Jan – 31 Jan/6 Feb",e:"2026 ref: 17–23 Apr, CBT",st:"e",ex:"keam"},
-{as:"~Feb",es:"~May–Jun",g:6,n:"CUET-UG 2027",cat:"sci",a:"Expected to open Jan 2027, close Feb (2026 opened 3 Jan)",e:"Expected May–Jun 2027",st:"e",ex:"cuet"},
-{as:"~Feb",es:"~Apr–May",g:6,n:"MHT CET 2027",cat:"state",a:"2026 ref: 10 Jan – 24 Feb. Late fee to 27 Feb",e:"2026 ref: PCM 11–20 Apr and 12–21 May",st:"e",ex:"mht"},
-{as:"~Feb",es:"~Apr",g:6,n:"KCET 2027",cat:"state",a:"2026 ref: about 16 Jan – 27 Feb",e:"2026 ref: 23–24 Apr",st:"e",ex:"kcet"},
-{as:"~Feb",es:"~Apr",g:7,n:"JEE Main 2027 Session 2",cat:"eng",a:"Expected Feb 2027",e:"Expected Apr 2027",st:"e"},
-{as:"~Mar",es:"~Apr–May",g:8,n:"MET 2027, Phase 1 (Manipal)",cat:"eng",a:"Expected to open late Sep or early Oct 2026. Phase 1 closes in the 3rd week of Mar",e:"Expected Apr (Phase 1), May (Phase 2)",st:"e",ex:"met"},
-{as:"~Mar",es:"~May",g:8,n:"COMEDK UGET 2027",cat:"eng",a:"Expected Feb to 3rd week of Mar",e:"Expected 2nd week of May",st:"e",ex:"comedk"},
-{as:"~Mar",es:"~May",g:8,n:"ISI Admission Test 2027",cat:"sci",a:"2026 ref: 12 Feb – 26 Mar (extended)",e:"2026 ref: 10 May",st:"e",ex:"isi"},
-{as:"~Mar",es:"~May",g:8,n:"IPMAT Indore 2027",cat:"mgt",a:"2026 ref: 2 Feb – 17 Mar",e:"2026 ref: 4 May",st:"e",ex:"ipmat"},
-{as:"~Apr",es:"~Apr",g:9,n:"VITEEE 2027",cat:"eng",a:"Expected to open in the last week of Oct 2026. 2026 closed 12 Apr",e:"Expected Apr 2027 (2026: 28 Apr – 3 May)",st:"e",ex:"viteee"},
-{as:"~Mar–Apr",es:"~Apr–May",g:9,n:"BITSAT 2027, Session 1",cat:"eng",a:"Expected Dec 2026 or Jan 2027 to Mar/Apr 2027",e:"Expected Apr–May 2027",st:"e",ex:"bitsat"},
-{as:"~Mar",es:"~May",g:9,n:"AP EAPCET 2027",cat:"state",a:"2026 ref: 4 Feb – 24 Mar. Late fee to 10 Apr",e:"2026 ref: Engg 12–15 and 18 May",st:"e",ex:"apeapcet"},
-{as:"~Apr",es:"~May",g:10,n:"TG EAPCET 2027",cat:"state",a:"2026 ref: 19 Feb – 4 Apr. Late fees to 2 May",e:"2026 ref: Engg 9–11 May",st:"e",ex:"tgeapcet"},
-{as:"~Apr",es:"~May",g:10,n:"WBJEE 2027",cat:"state",a:"2026 ref: 10 Mar – 8 Apr",e:"2026 ref: 24 May",st:"e",ex:"wbjee"},
-{as:"~Apr",es:"~Jun",g:10,n:"IISER IAT 2027",cat:"sci",a:"2026 ref: 5 Mar – 13 Apr",e:"2026 ref: 7 Jun",st:"e",ex:"iat"},
-{as:"~Apr",es:"~Jun",g:10,n:"NEST 2027",cat:"sci",a:"2026 ref: 5 Jan – 8 Apr",e:"2026 ref: 6 Jun",st:"e",ex:"nest"},
-{as:"~Apr",es:"~May",g:10,n:"IPMAT Rohtak 2027",cat:"mgt",a:"2026 ref: 6 Feb – 6 Apr",e:"2026 ref: 10 May",st:"e",ex:"ipmatr"},
-{as:"~Apr",es:"~Apr",g:10,n:"SRMJEEE 2027, Phase 1",cat:"eng",a:"Expected late Oct or Nov 2026 to mid-Apr 2027",e:"Expected late Apr 2027",st:"e",ex:"srm"},
-{as:"~Mar",es:"~Apr–Jun",g:11,n:"NATA 2027",cat:"des",a:"Expected from Mar 2027",e:"Expected Apr–Jun, Fri and Sat. Phase 2 around Aug",st:"e",ex:"nata"},
-{as:"~May",es:"~May–Jun",g:12,n:"BITSAT 2027, Session 2",cat:"eng",a:"Expected Apr–May 2027",e:"Expected May–Jun 2027",st:"e",ex:"bitsat"},
-{as:"~Jun",es:"~Sep",g:12,n:"NDA & NA (II) 2027",cat:"def",a:"Expected late May to mid-Jun (2026: 20 May – 11 Jun)",e:"Expected Sep 2027 (2026: 13 Sep)",st:"e",ex:"nda"},
-{as:"~Jun",es:"~Sep",g:12,n:"Navy 10+2 B.Tech, Jan 2028 course",cat:"def",a:"Expected May–Jun 2027 (2026: 29 May – 18/29 Jun). Uses the JEE Main 2027 rank",e:"SSB from about Sep 2027",st:"e",ex:"navy"},
-{as:"~Jun",es:"~Jun–Jul",g:13,n:"SRMJEEE 2027, Phases 2 and 3",cat:"eng",a:"Expected Jun 2027",e:"Expected Jun–Jul 2027",st:"e",ex:"srm"}
+{sn:"CLAT",as:"31 Oct",es:"6 Dec",g:0,n:"CLAT 2027",cat:"law",a:"3 Aug – 31 Oct 2026",e:"6 Dec 2026, 2–4 PM, offline",st:"c",ex:"clat"},
+{sn:"UCEED",as:"31 Oct",es:"17 Jan",g:0,n:"UCEED 2027",cat:"des",a:"1–31 Oct 2026. Late fee to 6 Nov, 5 PM",e:"17 Jan 2027, 9 AM–12 noon",st:"c",ex:"uceed"},
+{sn:"JEE Main · S1",as:"~Nov",es:"22–30 Jan",g:1,n:"JEE Main 2027 Session 1",cat:"eng",a:"Expected to open in the last week of Oct, close in Nov",e:"22–24 and 28–30 Jan 2027 (31 Jan buffer)",st:"m"},
+{sn:"AILET",as:"10 Nov",es:"13 Dec",g:2,n:"AILET 2027",cat:"law",a:"7 Aug – 10 Nov 2026",e:"13 Dec 2026, 2–4 PM, offline",st:"c",ex:"ailet"},
+{sn:"NID DAT",as:"30 Nov",es:"20 Dec",g:2,n:"NID DAT 2027",cat:"des",a:"10 Sep – 30 Nov 2026. Edit window 1–3 Dec",e:"Prelims 20 Dec 2026",st:"c",ex:"nid"},
+{sn:"KLEEE",as:"2 Dec",es:"See KL site",g:3,n:"KLEEE 2027 (KL University)",cat:"eng",a:"18 Sep – 2 Dec 2026, first phase (reported by an aggregator)",e:"Per KL schedule. Verify on kluniversity.in",st:"e"},
+{sn:"NDA & NA (I)",as:"22 Dec",es:"11 Apr",g:3,n:"NDA & NA (I) 2027",cat:"def",a:"2–22 Dec 2026",e:"11 Apr 2027 (Sun)",st:"c",ex:"nda"},
+{sn:"NIFT",as:"~Dec",es:"10 Jan",g:4,n:"NIFT 2027",cat:"des",a:"Expected Nov–Dec 2026",e:"10 Jan 2027 (NTA calendar)",st:"m",ex:"nift"},
+{sn:"KEAM",as:"~Feb",es:"~Apr",g:5,n:"KEAM 2027",cat:"state",a:"2026 ref: 5 Jan – 31 Jan/6 Feb",e:"2026 ref: 17–23 Apr, CBT",st:"e",ex:"keam"},
+{sn:"CUET-UG",as:"~Feb",es:"~May–Jun",g:6,n:"CUET-UG 2027",cat:"sci",a:"Expected to open Jan 2027, close Feb (2026 opened 3 Jan)",e:"Expected May–Jun 2027",st:"e",ex:"cuet"},
+{sn:"MHT CET",as:"~Feb",es:"~Apr–May",g:6,n:"MHT CET 2027",cat:"state",a:"2026 ref: 10 Jan – 24 Feb. Late fee to 27 Feb",e:"2026 ref: PCM 11–20 Apr and 12–21 May",st:"e",ex:"mht"},
+{sn:"KCET",as:"~Feb",es:"~Apr",g:6,n:"KCET 2027",cat:"state",a:"2026 ref: about 16 Jan – 27 Feb",e:"2026 ref: 23–24 Apr",st:"e",ex:"kcet"},
+{sn:"JEE Main · S2",as:"~Feb",es:"~Apr",g:7,n:"JEE Main 2027 Session 2",cat:"eng",a:"Expected Feb 2027",e:"Expected Apr 2027",st:"e"},
+{sn:"MET · P1",as:"~Mar",es:"~Apr–May",g:8,n:"MET 2027, Phase 1 (Manipal)",cat:"eng",a:"Expected to open late Sep or early Oct 2026. Phase 1 closes in the 3rd week of Mar",e:"Expected Apr (Phase 1), May (Phase 2)",st:"e",ex:"met"},
+{sn:"COMEDK",as:"~Mar",es:"~May",g:8,n:"COMEDK UGET 2027",cat:"eng",a:"Expected Feb to 3rd week of Mar",e:"Expected 2nd week of May",st:"e",ex:"comedk"},
+{sn:"ISI",as:"~Mar",es:"~May",g:8,n:"ISI Admission Test 2027",cat:"sci",a:"2026 ref: 12 Feb – 26 Mar (extended)",e:"2026 ref: 10 May",st:"e",ex:"isi"},
+{sn:"IPMAT Indore",as:"~Mar",es:"~May",g:8,n:"IPMAT Indore 2027",cat:"mgt",a:"2026 ref: 2 Feb – 17 Mar",e:"2026 ref: 4 May",st:"e",ex:"ipmat"},
+{sn:"VITEEE",as:"~Apr",es:"~Apr",g:9,n:"VITEEE 2027",cat:"eng",a:"Expected to open in the last week of Oct 2026. 2026 closed 12 Apr",e:"Expected Apr 2027 (2026: 28 Apr – 3 May)",st:"e",ex:"viteee"},
+{sn:"BITSAT · S1",as:"~Mar–Apr",es:"~Apr–May",g:9,n:"BITSAT 2027, Session 1",cat:"eng",a:"Expected Dec 2026 or Jan 2027 to Mar/Apr 2027",e:"Expected Apr–May 2027",st:"e",ex:"bitsat"},
+{sn:"AP EAPCET",as:"~Mar",es:"~May",g:9,n:"AP EAPCET 2027",cat:"state",a:"2026 ref: 4 Feb – 24 Mar. Late fee to 10 Apr",e:"2026 ref: Engg 12–15 and 18 May",st:"e",ex:"apeapcet"},
+{sn:"TG EAPCET",as:"~Apr",es:"~May",g:10,n:"TG EAPCET 2027",cat:"state",a:"2026 ref: 19 Feb – 4 Apr. Late fees to 2 May",e:"2026 ref: Engg 9–11 May",st:"e",ex:"tgeapcet"},
+{sn:"WBJEE",as:"~Apr",es:"~May",g:10,n:"WBJEE 2027",cat:"state",a:"2026 ref: 10 Mar – 8 Apr",e:"2026 ref: 24 May",st:"e",ex:"wbjee"},
+{sn:"IISER IAT",as:"~Apr",es:"~Jun",g:10,n:"IISER IAT 2027",cat:"sci",a:"2026 ref: 5 Mar – 13 Apr",e:"2026 ref: 7 Jun",st:"e",ex:"iat"},
+{sn:"NEST",as:"~Apr",es:"~Jun",g:10,n:"NEST 2027",cat:"sci",a:"2026 ref: 5 Jan – 8 Apr",e:"2026 ref: 6 Jun",st:"e",ex:"nest"},
+{sn:"IPMAT Rohtak",as:"~Apr",es:"~May",g:10,n:"IPMAT Rohtak 2027",cat:"mgt",a:"2026 ref: 6 Feb – 6 Apr",e:"2026 ref: 10 May",st:"e",ex:"ipmatr"},
+{sn:"SRMJEEE · P1",as:"~Apr",es:"~Apr",g:10,n:"SRMJEEE 2027, Phase 1",cat:"eng",a:"Expected late Oct or Nov 2026 to mid-Apr 2027",e:"Expected late Apr 2027",st:"e",ex:"srm"},
+{sn:"NATA",as:"~Mar",es:"~Apr–Jun",g:11,n:"NATA 2027",cat:"des",a:"Expected from Mar 2027",e:"Expected Apr–Jun, Fri and Sat. Phase 2 around Aug",st:"e",ex:"nata"},
+{sn:"BITSAT · S2",as:"~May",es:"~May–Jun",g:12,n:"BITSAT 2027, Session 2",cat:"eng",a:"Expected Apr–May 2027",e:"Expected May–Jun 2027",st:"e",ex:"bitsat"},
+{sn:"NDA & NA (II)",as:"~Jun",es:"~Sep",g:12,n:"NDA & NA (II) 2027",cat:"def",a:"Expected late May to mid-Jun (2026: 20 May – 11 Jun)",e:"Expected Sep 2027 (2026: 13 Sep)",st:"e",ex:"nda"},
+{sn:"Navy 10+2",as:"~Jun",es:"~Sep",g:12,n:"Navy 10+2 B.Tech, Jan 2028 course",cat:"def",a:"Expected May–Jun 2027 (2026: 29 May – 18/29 Jun). Uses the JEE Main 2027 rank",e:"SSB from about Sep 2027",st:"e",ex:"navy"},
+{sn:"SRMJEEE · P2–3",as:"~Jun",es:"~Jun–Jul",g:13,n:"SRMJEEE 2027, Phases 2 and 3",cat:"eng",a:"Expected Jun 2027",e:"Expected Jun–Jul 2027",st:"e",ex:"srm"}
 ];
 
 const TICKETS=[
@@ -1278,7 +1287,7 @@ function goView(id,o){
   document.title=(id==="home"?"Beyond JEE":VLABEL[id]+" · Beyond JEE");
   if(o.push!==false&&location.hash!=="#"+id){ try{ history.pushState(null,"","#"+id) }catch(e){ location.hash=id } }
   if(o.scroll!==false) window.scrollTo(0,0);
-  if(!was||was.id!==id){ const v=$("#"+id); anim(v,{opacity:[0,1],transform:["translateY(8px)","translateY(0px)"]},{duration:.25,ease:EASE}) }
+  if(!was||was.id!==id){ if(id==="cal"&&typeof animCal==="function") animCal(); else { const v=$("#"+id); anim(v,{opacity:[0,1],transform:["translateY(8px)","translateY(0px)"]},{duration:.25,ease:EASE}) } }
 }
 function scrollToEl(el){
   const v=el.closest?el.closest(".view"):null;
@@ -1349,24 +1358,39 @@ function renderHero(){
 
 /* ---------- section B: calendar ---------- */
 const calState={cat:"all",st:"all"};
+const MONS=[["Oct","Oct 2026"],["Nov","Nov 2026"],["Dec","Dec 2026"],["Jan","Jan 2027"],["Feb","Feb 2027"],["Mar","Mar 2027"],["Apr","Apr 2027"],["May","May 2027"],["Jun","Jun 2027"],["Jul","Jul 2027"]];
+function closeMonth(r){ const m=r.as.match(/Oct|Nov|Dec|Jan|Feb|Mar|Apr|May|Jun|Jul/g); return m?m[m.length-1]:null }
+function nowMon(){ return new Date().toLocaleDateString("en-US",{month:"short",timeZone:"Asia/Kolkata"}) }
 function renderCal(animate){
-  const rows=CAL.filter(r=>(calState.cat==="all"||r.cat===calState.cat)&&(calState.st==="all"||(calState.st==="c"&&(r.st==="c"||r.st==="m"))||(calState.st==="e"&&(r.st==="e"||r.st==="m"))));
-  let html='<div class="cal2-head" aria-hidden="true"><span></span><span>Exam</span><span>Forms close</span><span>Exam date</span><span></span></div>';
-  GROUPS.forEach((g,i)=>{
-    const rs=rows.filter(r=>r.g===i); if(!rs.length) return;
-    html+='<section class="cal2-g"><h3>'+g+'<small>'+rs.length+'</small></h3>'+rs.map(r=>
-      '<details class="cr2 '+(r.st==="e"?"e":"c")+'"><summary>'+
-      '<span class="dt dt-'+r.st+'" title="'+stLabel(r.st)+'"><span class="vh">'+stLabel(r.st)+'</span></span>'+
-      '<span class="cr2-n"><b>'+r.n+'</b><small>'+CATNAME[r.cat]+'</small>'+(r.ex&&GB[r.ex]?'<span class="gm gm-s" title="Benefit for girl candidates">Girls</span>':"")+'</span>'+
-      '<span class="cr2-d"><span class="cl"><i>Closes</i><span class="v'+(r.st==="c"?" hl":"")+'">'+r.as+'</span></span><span class="ed"><i>Exam</i><span class="v">'+r.es+'</span></span></span>'+
-      '<span class="cr2-c" aria-hidden="true"></span></summary>'+
-      '<div class="cr2-b"><p><b>Apply</b>'+r.a+'</p><p><b>Exam</b>'+r.e+'</p>'+(r.ex&&GB[r.ex]?'<p class="gp"><b>Girls</b>'+GB[r.ex]+'</p>':"")+
-      '<div class="act">'+(r.ex?'<button class="mb" type="button" data-plan="'+r.ex+'" aria-pressed="false">Add to my list</button><a class="mb" href="#exams" data-open="'+r.ex+'">Full details</a>':"")+'</div></div></details>'
-    ).join("")+'</section>';
+  const rows=CAL.map((r,i)=>Object.assign({i},r)).filter(r=>(calState.cat==="all"||r.cat===calState.cat)&&(calState.st==="all"||(calState.st==="c"&&(r.st==="c"||r.st==="m"))||(calState.st==="e"&&(r.st==="e"||r.st==="m"))));
+  const now=nowMon();
+  let html="";
+  MONS.forEach(([k,label])=>{
+    const rs=rows.filter(r=>closeMonth(r)===k); if(!rs.length) return;
+    html+='<section class="mc'+(k===now?" now":"")+'" aria-label="'+label+'"><h3><span>'+label.split(" ")[0]+'<small>'+label.split(" ")[1]+'</small></span>'+(k===now?'<em>This month</em>':'<b>'+rs.length+'</b>')+'</h3><ul>'+
+      rs.map(r=>'<li><button type="button" class="mr '+(r.st==="e"?"e":"c")+'" data-i="'+r.i+'"><span class="dt dt-'+r.st+'"><span class="vh">'+stLabel(r.st)+'</span></span><span class="mn">'+r.sn+(r.ex&&GB[r.ex]?'<i class="gdot" title="Benefit for girl candidates"></i>':"")+'</span><span class="md'+(r.st==="c"?" hl":"")+'">'+r.as+'</span></button></li>').join("")+'</ul></section>';
   });
-  $("#calOut").innerHTML=html.indexOf("cal2-g")<0?'<p class="empty">No exams match this filter. Try another field or status.</p>':html;
-  syncPlanButtons();
+  const host=$("#calOut");
+  host.innerHTML=html?'<div class="mgrid" id="mgrid">'+html+'</div>':'<p class="empty">No exams match this filter. Try another field or status.</p>';
+  if(window.matchMedia("(max-width:759px)").matches){ const g=$("#mgrid"), n=$(".mc.now",host)||$(".mc",host); if(g&&n) g.scrollLeft=Math.max(0,n.offsetLeft-16) }
+  if(animate!==false) animCal();
 }
+function animCal(){ anim($$(".mc",$("#calOut")),{opacity:[0,1],transform:["translateY(14px)","translateY(0px)"]},{duration:.4,delay:stag(.05),ease:EASE}) }
+function openCalRow(i){
+  const r=CAL[i]; if(!r) return;
+  $("#calSheetIn").innerHTML='<button class="sheet-x" type="button" data-closecal aria-label="Close">×</button>'+
+   '<div class="cs-h"><h3>'+r.n+'</h3>'+stat(r.st)+(r.ex&&GB[r.ex]?gmark(GB[r.ex]):"")+'</div><p class="cs-s">'+CATNAME[r.cat]+'</p>'+
+   '<div class="facts cs-f"><div class="fact ap"><h4>Forms close</h4><p>'+r.a+'</p></div><div class="fact ex"><h4>Exam</h4><p>'+r.e+'</p></div></div>'+
+   '<div class="ex-foot">'+(r.ex?'<button class="mb pri" type="button" data-plan="'+r.ex+'" aria-pressed="false">Add to my list</button><a class="mb" href="#exams" data-open="'+r.ex+'">Full details</a>':"")+'</div>';
+  syncPlanButtons();
+  const sh=$("#calSheet"); sh.hidden=false; $("#calSheetIn").focus({preventScroll:true});
+}
+function closeCal(){ const sh=$("#calSheet"); if(sh) sh.hidden=true }
+document.addEventListener("click",e=>{
+  const m=e.target.closest(".mr"); if(m){ openCalRow(+m.dataset.i); return }
+  if(e.target.closest("[data-closecal]")) closeCal();
+});
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeCal() });
 function syncPlanButtons(){ $$("[data-plan]").forEach(b=>{ const on=plan.includes(b.dataset.plan); b.setAttribute("aria-pressed",on); b.textContent=on?"On my list":"Add to my list" }) }
 
 /* ---------- section C: exams (list + detail) ---------- */
@@ -1403,7 +1427,7 @@ $("#exOut").addEventListener("click",e=>{
   if(e.target.closest("[data-exback]")){ $(".exm").classList.remove("open"); $("#exams").classList.remove("det-open"); window.scrollTo(0,0) }
 });
 function openExam(id){
-  const x=exById(id); if(!x) return;
+  const x=exById(id); if(!x) return; closeCal();
   if(exCat!==x.cat){ exCat=x.cat; $$("#exCat .chip").forEach(c=>c.setAttribute("aria-pressed",c.dataset.k===exCat)) }
   renderEx(id);
   goView("exams");
