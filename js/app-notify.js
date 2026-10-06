@@ -25,8 +25,7 @@
   }
   function paintBadge(){
     const n=unseenCount();
-    [$("#notifN"),$("#notifNm")].forEach(b=>{
-      if(!b) return;
+    $$(".notif-badge").forEach(b=>{
       if(n>0){ b.hidden=false; b.textContent=n>9?"9+":String(n) } else { b.hidden=true }
     });
   }
@@ -35,6 +34,9 @@
     try{ localStorage.setItem(SEEN_KEY,DATA.items[0].time) }catch(e){}
     paintBadge();
   }
+  function tagFor(it){ return esc((typeof CATNAME!=="undefined"&&CATNAME[it.cat])||it.source) }
+
+  /* ---------- full Notifications page ---------- */
   function renderNotif(){
     const meta=$("#notifMeta"), out=$("#notifOut");
     if(!meta||!out) return;
@@ -51,14 +53,54 @@
     const seen=seenTime();
     out.innerHTML=items.map(it=>{
       const isNew=seen&&it.time>seen;
-      return '<article class="nf-row'+(isNew?" nf-new":"")+'"><div class="nf-top"><span class="nf-tag">'+esc((typeof CATNAME!=="undefined"&&CATNAME[it.cat])||it.source)+'</span><span class="nf-src">'+esc(it.source)+'</span><span class="nf-time">'+relTime(it.time)+'</span></div>'+
+      return '<article class="nf-row'+(isNew?" nf-new":"")+'"><div class="nf-top"><span class="nf-tag">'+tagFor(it)+'</span><span class="nf-src">'+esc(it.source)+'</span><span class="nf-time">'+relTime(it.time)+'</span></div>'+
         '<p class="nf-t">'+esc(it.title)+'</p>'+
         '<a class="nf-link" href="'+esc(it.url)+'" target="_blank" rel="noopener">Open source ↗</a></article>';
     }).join("");
   }
+
+  /* ---------- bell popover ---------- */
+  function renderPopover(){
+    const meta=$("#notifPopMeta"), out=$("#notifPopOut");
+    if(!meta||!out) return;
+    if(!DATA){ meta.textContent=""; out.innerHTML='<p class="np-empty">Could not load notifications right now.</p>'; return }
+    const checked=DATA.lastChecked, items=(DATA.items||[]).slice(0,6);
+    meta.textContent=checked?("Checked "+relTime(checked)):"Not checked yet";
+    out.innerHTML=items.length?items.map(it=>
+      '<a class="np-row" href="'+esc(it.url)+'" target="_blank" rel="noopener"><div class="np-top2"><span class="np-tag">'+tagFor(it)+'</span><span class="np-time">'+relTime(it.time)+'</span></div><p class="np-t">'+esc(it.title)+'</p></a>'
+    ).join(""):'<p class="np-empty">'+(checked?"No changes seen since the last check.":"Nothing checked yet. Checks every 6 hours.")+'</p>';
+  }
+  function openPop(){
+    const pop=$("#notifPop"); if(!pop) return;
+    renderPopover();
+    pop.hidden=false;
+    $$(".notif-bell").forEach(b=>b.setAttribute("aria-expanded","true"));
+    markSeen();
+    setTimeout(()=>document.addEventListener("click",outsideClose),0);
+    document.addEventListener("keydown",escClose);
+  }
+  function closePop(){
+    const pop=$("#notifPop"); if(!pop||pop.hidden) return;
+    pop.hidden=true;
+    $$(".notif-bell").forEach(b=>b.setAttribute("aria-expanded","false"));
+    document.removeEventListener("click",outsideClose);
+    document.removeEventListener("keydown",escClose);
+  }
+  function outsideClose(e){
+    const pop=$("#notifPop");
+    if(pop&&!pop.contains(e.target)&&!e.target.closest(".notif-bell")) closePop();
+  }
+  function escClose(e){ if(e.key==="Escape") closePop() }
+  document.addEventListener("click",e=>{
+    const bell=e.target.closest(".notif-bell");
+    if(bell){ const pop=$("#notifPop"); if(pop&&pop.hidden) openPop(); else closePop(); return }
+    if(e.target.closest("[data-np-all]")){ closePop() }
+  });
+
   function loadNotif(){
     fetch("/data/notifications.json",{cache:"no-store"}).then(r=>{ if(!r.ok) throw 0; return r.json() }).then(d=>{
       DATA=d; paintBadge(); renderNotif();
+      const pop=$("#notifPop"); if(pop&&!pop.hidden) renderPopover();
     }).catch(()=>{ if(!DATA){ renderNotif() } });
   }
   loadNotif();
