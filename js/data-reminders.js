@@ -1,0 +1,28 @@
+/* reminder dates for the .ics download. Confirmed = fixed by the conducting body. Expected = projected from the 2026 cycle, so the event only says "check the portal". */
+const ICS={
+ clat:[{d:"2026-10-31",t:"Last date to apply",a:[7,1]},{d:"2026-12-06",t:"Exam day, 2–4 PM",a:[7,1]}],
+ uceed:[{d:"2026-10-31",t:"Last date to apply",a:[7,1]},{d:"2026-11-06",t:"Last date with late fee, 5 PM",a:[1]},{d:"2027-01-17",t:"Exam day, 9 AM–12 noon",a:[7,1]}],
+ ailet:[{d:"2026-11-10",t:"Last date to apply",a:[7,1]},{d:"2026-12-13",t:"Exam day, 2–4 PM",a:[7,1]}],
+ nid:[{d:"2026-11-30",t:"Last date to apply, 11:59 PM",a:[7,1]},{d:"2026-12-20",t:"Prelims exam day",a:[7,1]}],
+ nda:[{d:"2026-12-02",t:"NDA (I) form opens",a:[1]},{d:"2026-12-22",t:"Last date to apply",a:[7,1]},{d:"2027-04-11",t:"Exam day",a:[7,1]}],
+ nift:[{d:"2026-11-15",t:"Check form window",x:1,a:[0]},{d:"2027-01-10",t:"Exam day",a:[7,1]}],
+ bitsat:[{d:"2026-12-15",t:"Check form window",x:1,a:[0]}],
+ viteee:[{d:"2026-10-26",t:"Check form window",x:1,a:[0]}],
+ srm:[{d:"2026-11-01",t:"Check form window",x:1,a:[0]}],
+ met:[{d:"2026-10-12",t:"Check form window",x:1,a:[0]}],
+ comedk:[{d:"2027-01-05",t:"Check form window",x:1,a:[0]}],
+ mht:[{d:"2027-01-10",t:"Check form window",x:1,a:[0]}],
+ kcet:[{d:"2027-01-16",t:"Check form window",x:1,a:[0]}],
+ wbjee:[{d:"2027-03-10",t:"Check form window",x:1,a:[0]}],
+ apeapcet:[{d:"2027-02-04",t:"Check form window",x:1,a:[0]}],
+ tgeapcet:[{d:"2027-02-19",t:"Check form window",x:1,a:[0]}],
+ keam:[{d:"2027-01-05",t:"Check form window",x:1,a:[0]}],
+ navy:[{d:"2027-05-29",t:"Check form window",x:1,a:[0]}],
+ iat:[{d:"2027-03-05",t:"Check form window",x:1,a:[0]}],
+ nest:[{d:"2027-01-05",t:"Check form window",x:1,a:[0]}],
+ isi:[{d:"2027-02-12",t:"Check form window",x:1,a:[0]}],
+ cuet:[{d:"2027-01-03",t:"Check form window",x:1,a:[0]}],
+ nata:[{d:"2027-03-01",t:"Check form window",x:1,a:[0]}],
+ ipmat:[{d:"2027-02-02",t:"Check form window",x:1,a:[0]}],
+ ipmatr:[{d:"2027-02-06",t:"Check form window",x:1,a:[0]}]
+};
