@@ -1,0 +1,20 @@
+[
+ {"id":"jeemain","name":"JEE Main (NTA)","cat":"eng","url":"https://jeemain.nta.nic.in"},
+ {"id":"josaa","name":"JoSAA","cat":"eng","url":"https://josaa.nic.in"},
+ {"id":"csab","name":"CSAB","cat":"eng","url":"https://csab.nic.in"},
+ {"id":"bitsat","name":"BITSAT","cat":"eng","url":"https://bitsadmission.com"},
+ {"id":"mhtcet","name":"MHT CET","cat":"state","url":"https://cetcell.mahacet.org"},
+ {"id":"kcet","name":"KCET (KEA)","cat":"state","url":"https://cetonline.karnataka.gov.in/kea"},
+ {"id":"apeapcet","name":"AP EAPCET","cat":"state","url":"https://cets.apsche.ap.gov.in"},
+ {"id":"tgeapcet","name":"TG EAPCET","cat":"state","url":"https://eapcet.tgche.ac.in"},
+ {"id":"nda","name":"NDA & NA (UPSC)","cat":"def","url":"https://upsc.gov.in"},
+ {"id":"cuet","name":"CUET-UG","cat":"sci","url":"https://cuet.nta.nic.in"},
+ {"id":"nest","name":"NEST","cat":"sci","url":"https://www.nestexam.in"},
+ {"id":"iat","name":"IISER IAT","cat":"sci","url":"https://www.iiseradmission.in"},
+ {"id":"uceed","name":"UCEED","cat":"des","url":"https://www.uceed.iitb.ac.in"},
+ {"id":"nid","name":"NID DAT","cat":"des","url":"https://admissions.nid.edu"},
+ {"id":"nata","name":"NATA","cat":"des","url":"https://www.nata.in"},
+ {"id":"clat","name":"CLAT (Consortium of NLUs)","cat":"law","url":"https://consortiumofnlus.ac.in"},
+ {"id":"ailet","name":"AILET (NLU Delhi)","cat":"law","url":"https://nationallawuniversitydelhi.in"},
+ {"id":"ipmat","name":"IPMAT Indore (IIM Indore)","cat":"mgt","url":"https://www.iimidr.ac.in"}
+]

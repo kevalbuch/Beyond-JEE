@@ -19,8 +19,8 @@ function chips(host,list,cur,pick){
   host.onclick=e=>{ const b=e.target.closest(".chip"); if(!b) return; $$(".chip",host).forEach(c=>c.setAttribute("aria-pressed",c===b)); pick(b.dataset.k) };
 }
 function exById(id){ return EX.find(x=>x.id===id) }
-const VIEWS=["home","soon","cal","exams","girls","syllabus","careers","cutoffs","counsel","faq","finder","plan","sources"];
-const VLABEL={home:"Home",soon:"Closing soon",cal:"Calendar",exams:"Exams",girls:"For girls",syllabus:"Syllabus",careers:"Careers",cutoffs:"Cutoffs",counsel:"Counselling",faq:"FAQs and myths",finder:"Find my route",plan:"My list",sources:"Official portals"};
+const VIEWS=["home","notif","soon","cal","exams","girls","syllabus","careers","cutoffs","counsel","faq","finder","plan","sources"];
+const VLABEL={home:"Home",notif:"Notifications",soon:"Closing soon",cal:"Calendar",exams:"Exams",girls:"For girls",syllabus:"Syllabus",careers:"Careers",cutoffs:"Cutoffs",counsel:"Counselling",faq:"FAQs and myths",finder:"Find my route",plan:"My list",sources:"Official portals"};
 function goView(id,o){
   o=o||{}; if(!VIEWS.includes(id)) id="home";
   const was=$(".view:not([hidden])");
@@ -181,7 +181,7 @@ function openExam(id){
 /* ---------- home tiles ---------- */
 function renderTiles(){
   const host=$("#tiles"); if(!host) return;
-  const T=[["soon","clock","Closing soon","Deadlines counted from today"],["cal","cal","Calendar","Every form window, month by month"],["exams","exam","Exams",EX.length+" exams with fees, eligibility and syllabus"],["girls","heart","For girls","Seats, fee cuts and scholarships"],["syllabus","book","Syllabus","One PCM syllabus, and what each exam tests"],["careers","brief","Careers","Roles and starting pay by route"],["cutoffs","chart","Cutoffs","Last year’s closing ranks and scores"],["counsel","flow","Counselling","JoSAA, state and BITS, step by step"],["faq","help","FAQs and myths","Short answers from the official rules"],["finder","compass","Find my route","Three questions, two matches"],["plan","list","My list",plan.length+" of 10 exams, with reminders"],["sources","link","Official portals","Apply only on these sites"]];
+  const T=[["notif","bell","Notifications","New updates from official exam pages"],["soon","clock","Closing soon","Deadlines counted from today"],["cal","cal","Calendar","Every form window, month by month"],["exams","exam","Exams",EX.length+" exams with fees, eligibility and syllabus"],["girls","heart","For girls","Seats, fee cuts and scholarships"],["syllabus","book","Syllabus","One PCM syllabus, and what each exam tests"],["careers","brief","Careers","Roles and starting pay by route"],["cutoffs","chart","Cutoffs","Last year’s closing ranks and scores"],["counsel","flow","Counselling","JoSAA, state and BITS, step by step"],["faq","help","FAQs and myths","Short answers from the official rules"],["finder","compass","Find my route","Three questions, two matches"],["plan","list","My list",plan.length+" of 10 exams, with reminders"],["sources","link","Official portals","Apply only on these sites"]];
   host.innerHTML=T.map(t=>'<a class="tile" href="#'+t[0]+'" data-go="'+t[0]+'"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-'+t[1]+'"/></svg><b>'+t[2]+'</b><small>'+t[3]+'</small></a>').join("");
 }
 
