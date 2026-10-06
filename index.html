@@ -7,13 +7,15 @@
 <meta name="theme-color" content="#F5F6F8">
 <style>body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
 <title>Beyond JEE</title>
+<script>(function(){try{var t=localStorage.getItem("bj-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}})()</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
-/* Layout concept: a study handbook with a colour code. Light only. Blue = exam date and links, amber = apply-by, green = confirmed or upside, red = risk or closing within 30 days. Three text sizes carry meaning: key value, body, label. */
+/* Layout concept: a study handbook with a colour code. Light and dark. Blue = exam date and links, amber = apply-by, green = confirmed or upside, red = risk or closing within 30 days. Three text sizes carry meaning: key value, body, label. */
 :root{
   color-scheme:light;
+  --accent-hover:#184D88;
   --paper:#F4F5F8; --sheet:#FFFFFF; --ink:#121A2B; --lead:#364152; --dim:#5F6B7C;
   --rule:#D5DAE2; --soft:#EBEEF3;
   --accent:#1F5FA8; --accent-soft:#E7F0FA; --accent-line:#BDD4EE; --on-accent:#FFFFFF;
@@ -24,6 +26,28 @@
   --f-display:'Source Serif 4',Georgia,'Times New Roman',serif;
   --f-body:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
   --f-mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --paper:#0E131E; --sheet:#161D2B; --ink:#EDF1F7; --lead:#C2CAD7; --dim:#95A2B5;
+  --rule:#2B3447; --soft:#1E2636;
+  --accent:#6EAAF2; --accent-soft:#15283F; --accent-line:#2A4A73; --on-accent:#0A1524; --accent-hover:#93BFF6;
+  --amber:#F0B462; --amber-soft:#2A2010; --amber-line:#5B4220;
+  --green:#5BD08C; --green-soft:#10291B; --green-line:#255B3A;
+  --red:#FF8B7D; --red-soft:#2E1512; --red-line:#6C2E28;
+  --violet:#B9A5FF; --violet-soft:#221C3D;
+  --pink:#F57DB1; --pink-deep:#F8A6CB; --pink-soft:#2C1320; --pink-line:#6B2A47;
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#0E131E; --sheet:#161D2B; --ink:#EDF1F7; --lead:#C2CAD7; --dim:#95A2B5;
+  --rule:#2B3447; --soft:#1E2636;
+  --accent:#6EAAF2; --accent-soft:#15283F; --accent-line:#2A4A73; --on-accent:#0A1524; --accent-hover:#93BFF6;
+  --amber:#F0B462; --amber-soft:#2A2010; --amber-line:#5B4220;
+  --green:#5BD08C; --green-soft:#10291B; --green-line:#255B3A;
+  --red:#FF8B7D; --red-soft:#2E1512; --red-line:#6C2E28;
+  --violet:#B9A5FF; --violet-soft:#221C3D;
+  --pink:#F57DB1; --pink-deep:#F8A6CB; --pink-soft:#2C1320; --pink-line:#6B2A47;
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -59,9 +83,10 @@ button{font:inherit;color:inherit;cursor:pointer}
 .nav-links a:hover{color:var(--ink)}
 .nav-links a b{display:grid;place-items:center;width:1.35rem;height:1.35rem;border:1px solid var(--rule);border-radius:50%;font:600 .66rem var(--f-mono)}
 .nav-links a span{display:none}
-@media (min-width:1000px){.nav-links a span{display:inline}}
+.nav-links a.on span{display:inline}
+@media (max-width:560px){.nav-links a.on span{display:none}}
 .nav-links a.on{color:var(--on-accent);background:var(--accent)}
-.nav-links a.on b{border-color:rgba(255,255,255,.55)}
+.nav-links a.on b{border-color:currentColor}
 .nav-progress{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left}
 
 /* hero */
@@ -72,7 +97,7 @@ h1.title{margin:0;font:700 clamp(2.3rem,5vw,3.8rem)/1.08 var(--f-display);letter
 .lede{max-width:62ch;color:var(--lead);font-size:1.0625rem;line-height:1.55;margin:16px 0 0}
 .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 .btn{display:inline-flex;align-items:center;padding:10px 18px;border:1px solid var(--accent);background:var(--accent);color:var(--on-accent);text-decoration:none;font-size:.9375rem;font-weight:600;border-radius:6px;transition:background .2s}
-.btn:hover{background:#184D88}
+.btn:hover{background:var(--accent-hover);border-color:var(--accent-hover)}
 .btn.ghost{background:var(--sheet);color:var(--accent)}
 .btn.ghost:hover{background:var(--accent-soft)}
 
@@ -165,7 +190,7 @@ h3{margin:0;font-weight:600}
 .mb:hover{border-color:var(--accent);color:var(--accent)}
 .mb[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
 .mb.pri{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
-.mb.pri:hover{background:#184D88;color:var(--on-accent)}
+.mb.pri:hover{background:var(--accent-hover);color:var(--on-accent)}
 .empty{padding:20px 0;color:var(--dim)}
 
 /* exams */
@@ -291,8 +316,8 @@ tr:last-child td{border-bottom:0}
 footer{padding-block:32px 100px;max-width:76ch}
 
 /* floating list button */
-.pill{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;display:flex;align-items:center;gap:10px;padding:9px 16px;background:var(--ink);color:#fff;border:0;border-radius:999px;font-size:.8125rem;font-weight:600;box-shadow:0 8px 22px -10px rgba(18,26,43,.6)}
-.pill b{font:600 .75rem var(--f-mono);color:var(--ink);background:#fff;padding:1px 8px;border-radius:999px}
+.pill{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;display:flex;align-items:center;gap:10px;padding:9px 16px;background:var(--ink);color:var(--paper);border:0;border-radius:999px;font-size:.8125rem;font-weight:600;box-shadow:0 8px 22px -10px rgba(0,0,0,.55)}
+.pill b{font:600 .75rem var(--f-mono);color:var(--ink);background:var(--paper);padding:1px 8px;border-radius:999px}
 
 /* girl candidates: pink role */
 :root{--pink:#B0245F;--pink-deep:#8A1B4A;--pink-soft:#FDEEF5;--pink-line:#F3C3D8}
@@ -301,7 +326,7 @@ footer{padding-block:32px 100px;max-width:76ch}
 .cr .nm .gb{display:flex;width:fit-content;max-width:100%;margin:5px 0 2px;white-space:normal;line-height:1.35;text-align:left}
 .g-card .gb{text-transform:none;letter-spacing:.02em;font-size:.75rem}
 .callout.girl{background:var(--pink-soft);border-color:var(--pink-line)} .callout.girl h4{color:var(--pink)} .callout.girl p{color:var(--ink)}
-.g-sec{background:linear-gradient(180deg,var(--pink-soft) 0,rgba(253,238,245,0) 340px);margin-inline:calc(-1*clamp(16px,4vw,40px));padding-inline:clamp(16px,4vw,40px);border-top-color:var(--pink-line)}
+.g-sec{background:linear-gradient(180deg,var(--pink-soft) 0,transparent 340px);margin-inline:calc(-1*clamp(16px,4vw,40px));padding-inline:clamp(16px,4vw,40px);border-top-color:var(--pink-line)}
 .g-sec .eyebrow{color:var(--pink)}
 .g-sec .sh h2{color:var(--pink-deep)}
 .g-sec .sh .gb{vertical-align:baseline}
@@ -327,12 +352,98 @@ footer{padding-block:32px 100px;max-width:76ch}
 .g-none div{display:grid;gap:1px 20px;padding:9px 0;border-bottom:1px solid var(--soft)}
 @media (min-width:700px){.g-none div{grid-template-columns:160px minmax(0,1fr)}}
 .g-none b{font-weight:600}.g-none span{color:var(--lead);font-size:.9375rem}
+
+/* ---- v3: theme toggle, search, compare, folds, section nav ---- */
+body{transition:background .25s,color .25s}
+.skip{position:absolute;left:12px;top:-60px;z-index:100;padding:8px 14px;background:var(--accent);color:var(--on-accent);border-radius:6px;font-weight:600;text-decoration:none}
+.skip:focus{top:8px}
+.nav-in{gap:10px}
+.nav-links{margin-left:auto}
+.nav-act{display:flex;gap:6px;flex:none;padding-left:8px;border-left:1px solid var(--rule)}
+.ib{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:34px;min-width:34px;padding:0 9px;border:1px solid var(--rule);background:var(--sheet);border-radius:8px;color:var(--lead);font-size:.8125rem;transition:border-color .15s,color .15s,background .15s}
+.ib:hover{border-color:var(--accent);color:var(--accent)}
+.ib svg{width:17px;height:17px;flex:none;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.ib kbd{display:none;font:500 .6875rem var(--f-mono);color:var(--dim);border:1px solid var(--rule);border-radius:4px;padding:0 5px}
+@media (min-width:1000px){.ib kbd{display:inline}}
+.ib .ico-sun{display:none}
+:root[data-theme="dark"] .ib .ico-sun{display:block}:root[data-theme="dark"] .ib .ico-moon{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ib .ico-sun{display:block}:root:not([data-theme="light"]) .ib .ico-moon{display:none}}
+.nav-cur{display:none}
+@media (max-width:999px){.brand{font-size:1.05rem}}
+@media (max-width:560px){.nav-links a{padding:7px 6px}.nav-in{gap:6px}.brand{display:none}.nav-cur{display:block;flex:none;font:600 .8125rem var(--f-body);max-width:34vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--accent)}}
+
+/* search */
+.srch{position:fixed;inset:0;z-index:90;background:rgba(8,12,20,.55);display:flex;align-items:flex-start;justify-content:center;padding:max(60px,10vh) 16px 16px;backdrop-filter:blur(3px)}
+.srch[hidden]{display:none}
+.srch-box{width:100%;max-width:640px;background:var(--sheet);border:1px solid var(--rule);border-radius:12px;box-shadow:0 24px 60px -20px rgba(0,0,0,.6);overflow:hidden;display:flex;flex-direction:column;max-height:min(70vh,560px)}
+.srch-box input{width:100%;padding:15px 18px;border:0;border-bottom:1px solid var(--rule);background:transparent;color:var(--ink);font:500 1.0625rem var(--f-body);outline:none}
+.srch-box input::placeholder{color:var(--dim)}
+.srch-out{list-style:none;margin:0;padding:6px;overflow-y:auto}
+.srch-g{padding:8px 12px 4px;font:600 .6875rem var(--f-mono);letter-spacing:.07em;text-transform:uppercase;color:var(--dim)}
+.srch-it{display:grid;gap:1px;padding:9px 12px;border-radius:8px;cursor:pointer}
+.srch-it b{font-weight:600;font-size:.9375rem}
+.srch-it b .gb{margin-left:8px;font-weight:600}
+.srch-it>span{font-size:.8125rem;color:var(--dim);overflow-wrap:anywhere}
+.srch-it[aria-selected="true"],.srch-it:hover{background:var(--accent-soft)}
+.srch-it mark{background:transparent;color:var(--accent);font-weight:700}
+.srch-empty{padding:18px;color:var(--dim);font-size:.9375rem}
+.srch-h{margin:0;padding:8px 14px;border-top:1px solid var(--soft);color:var(--dim)}
+
+/* folds: keep panels short */
+.more{border-top:1px solid var(--soft);padding-top:2px}
+.more>summary{list-style:none;display:flex;align-items:center;gap:8px;padding:9px 0;font-weight:600;font-size:.875rem;color:var(--accent);cursor:pointer;user-select:none}
+.more>summary::-webkit-details-marker{display:none}
+.more>summary::before{content:"+";display:grid;place-items:center;width:20px;height:20px;border:1px solid var(--accent-line);border-radius:50%;font:500 .95rem/1 var(--f-mono);transition:transform .2s}
+.more[open]>summary::before{content:"\2212"}
+.more>summary:hover{text-decoration:underline}
+.more .spec{margin-top:0}
+.more.pk>summary{color:var(--pink)}.more.pk>summary::before{border-color:var(--pink-line)}
+.g-card .more{border-top:0}
+.g-card .more ul{margin-top:2px}
+
+/* compare */
+.cmp{margin-top:34px}
+.cmp h3{font:700 1.3rem/1.2 var(--f-display)}
+.cmp-sel{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));margin:10px 0 12px}
+.cmp-sel select{width:100%;padding:9px 12px;border:1px solid var(--rule);border-radius:8px;background:var(--sheet);color:var(--ink);font:500 .9375rem var(--f-body)}
+.cmp-t{min-width:640px}
+.cmp-t th{white-space:normal;color:var(--ink);font:700 1rem var(--f-display);text-transform:none;letter-spacing:0;background:var(--accent-soft)}
+.cmp-t th:first-child{background:var(--soft);font:600 .6875rem var(--f-mono);letter-spacing:.07em;text-transform:uppercase;color:var(--dim);width:110px}
+.cmp-t td:first-child{font:600 .6875rem var(--f-mono);letter-spacing:.07em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
+.cmp-t tr.ap td:not(:first-child){color:var(--amber);font-weight:600}
+.cmp-t tr.ex td:not(:first-child){color:var(--accent);font-weight:600}
+.cmp-t tr.gl td:not(:first-child){color:var(--pink)}
+.cmp-t td{min-width:180px}
+
+/* section nav and floaters */
+.sec-nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:28px;padding-top:12px;border-top:1px dashed var(--rule)}
+.sec-nav a{display:inline-flex;gap:6px;align-items:center;font-size:.875rem;font-weight:600;color:var(--accent);text-decoration:none;padding:6px 0}
+.sec-nav a:hover{text-decoration:underline}
+.sec-nav a small{font:500 .6875rem var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
+.totop{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(66px + env(safe-area-inset-bottom,0px));z-index:59;width:38px;height:38px;border-radius:50%;border:1px solid var(--rule);background:var(--sheet);color:var(--lead);display:grid;place-items:center;box-shadow:0 6px 16px -8px rgba(0,0,0,.5);opacity:0;pointer-events:none;transform:translateY(6px);transition:opacity .2s,transform .2s}
+.totop.on{opacity:1;pointer-events:auto;transform:none}
+.totop:hover{color:var(--accent);border-color:var(--accent)}
+.totop svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.rem{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:14px;padding:12px 14px;background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:10px}
+.rem p{margin:0;flex:1 1 260px;font-size:.875rem;color:var(--lead)}
+.rem p b{color:var(--ink)}
+.t-rem{margin-top:auto;padding-top:12px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.t-rem .t-link{margin:0;padding:0}
+.t-rem button{background:none;border:0;padding:0;font-size:.8125rem;font-weight:500;color:var(--accent)}
+.t-rem button:hover{text-decoration:underline}
+.ticket .t-link{margin-top:0;padding-top:0}
+.flash{animation:fl 1.4s ease-out}
+@keyframes fl{0%{box-shadow:0 0 0 3px var(--accent-line)}100%{box-shadow:0 0 0 3px transparent}}
+@media (prefers-reduced-motion:reduce){.flash{animation:none}body{transition:none}}
+@media print{.nav,.pill,.totop,.srch{display:none!important}}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <nav class="nav" aria-label="Sections">
   <div class="nav-in">
     <a class="brand" href="#top">Beyond JEE</a>
+    <span class="nav-cur" id="navCur" aria-hidden="true"></span>
     <div class="nav-links" id="navLinks">
       <a href="#soon" data-s="soon"><b>A</b><span>Closing soon</span></a>
       <a href="#cal" data-s="cal"><b>B</b><span>Calendar</span></a>
@@ -344,11 +455,15 @@ footer{padding-block:32px 100px;max-width:76ch}
       <a href="#plan" data-s="plan"><b>H</b><span>My plan</span></a>
       <a href="#sources" data-s="sources"><b>I</b><span>Sources</span></a>
     </div>
+    <div class="nav-act">
+      <button class="ib" id="srchBtn" type="button" aria-label="Search the guide" title="Search (press /)"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><kbd>/</kbd></button>
+      <button class="ib" id="themeBtn" type="button" aria-label="Switch colour theme" title="Switch light or dark"><svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg><svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+    </div>
   </div>
   <div class="nav-progress" id="navProg"></div>
 </nav>
 
-<main class="wrap" id="top">
+<main class="wrap" id="top"><span id="main"></span>
   <header class="hero">
     <div>
       <p class="kicker mono"><span>Class 12 · PCM</span><span>Admission cycle 2027</span><span>Dates checked 3 Oct 2026</span></p>
@@ -403,6 +518,12 @@ footer{padding-block:32px 100px;max-width:76ch}
     </header>
     <div class="chips" id="exCat" role="group" aria-label="Field"></div>
     <div id="exOut"></div>
+    <div class="cmp" id="cmp">
+      <h3>Compare exams</h3>
+      <p class="note" style="margin-top:4px">Pick up to three exams. Use “Compare” inside any exam to add it here.</p>
+      <div class="cmp-sel" id="cmpSel"></div>
+      <div id="cmpOut"></div>
+    </div>
   </section>
 
   <section class="block g-sec" id="girls">
@@ -458,6 +579,10 @@ footer{padding-block:32px 100px;max-width:76ch}
       <p class="lede">Add exams from the calendar, the exam list or the path finder. Your list stays in this browser only.</p>
     </header>
     <div id="planOut"></div>
+    <div class="rem">
+      <p><b>Get reminders.</b> Download the dates for the exams on your list as a calendar file for Google Calendar, Apple Calendar or Outlook. Confirmed dates set alarms 7 days and 1 day before. Projected exams get a “check the portal” reminder only.</p>
+      <button class="mb pri" type="button" id="icsBtn">Download reminders (.ics)</button>
+    </div>
     <div class="two">
       <div>
         <h3>How to combine them</h3>
@@ -486,6 +611,14 @@ footer{padding-block:32px 100px;max-width:76ch}
   </footer>
 </main>
 
+<div class="srch" id="srch" hidden role="dialog" aria-modal="true" aria-label="Search the guide">
+  <div class="srch-box">
+    <input id="srchIn" type="search" placeholder="Search exams, fees, quotas, careers" autocomplete="off" aria-label="Search the guide" aria-controls="srchOut">
+    <ul class="srch-out" id="srchOut" role="listbox"></ul>
+    <p class="srch-h mono">↑ ↓ move · Enter open · Esc close</p>
+  </div>
+</div>
+<button class="totop" id="totop" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 <button class="pill" id="pill" type="button" aria-label="Go to my exam list">My list <b id="pillN">0/10</b></button>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -532,11 +665,11 @@ const CAL=[
 
 const TICKETS=[
 {n:"JEE Main 2027",sub:"Session 1 registration",kind:"w",big:"Late Oct",unit:"expected to open",close:"Expected in Nov",exam:"22–24, 28–30 Jan",url:"https://jeemain.nta.nic.in",host:"jeemain.nta.nic.in"},
-{n:"CLAT 2027",sub:"Law · 5-year BA LLB",kind:"c",due:"2026-10-31T23:59:00+05:30",close:"31 Oct 2026",exam:"6 Dec 2026",url:"https://consortiumofnlus.ac.in",host:"consortiumofnlus.ac.in"},
-{n:"UCEED 2027",sub:"Design · IIT B.Des",kind:"c",due:"2026-10-31T23:59:00+05:30",close:"31 Oct (late fee to 6 Nov)",exam:"17 Jan 2027",url:"https://www.uceed.iitb.ac.in",host:"uceed.iitb.ac.in"},
-{n:"AILET 2027",sub:"Law · NLU Delhi",kind:"c",due:"2026-11-10T23:59:00+05:30",close:"10 Nov 2026",exam:"13 Dec 2026",url:"https://nationallawuniversitydelhi.in",host:"nationallawuniversitydelhi.in"},
-{n:"NID DAT 2027",sub:"Design · B.Des at NID",kind:"c",due:"2026-11-30T23:59:00+05:30",close:"30 Nov 2026",exam:"Prelims 20 Dec",url:"https://admissions.nid.edu",host:"admissions.nid.edu"},
-{n:"NDA & NA (I) 2027",sub:"Defence · UPSC",kind:"c",due:"2026-12-22T23:59:00+05:30",open:"2026-12-02T00:00:00+05:30",close:"22 Dec 2026 (opens 2 Dec)",exam:"11 Apr 2027",url:"https://upsc.gov.in",host:"upsc.gov.in"}
+{eid:"clat",n:"CLAT 2027",sub:"Law · 5-year BA LLB",kind:"c",due:"2026-10-31T23:59:00+05:30",close:"31 Oct 2026",exam:"6 Dec 2026",url:"https://consortiumofnlus.ac.in",host:"consortiumofnlus.ac.in"},
+{eid:"uceed",n:"UCEED 2027",sub:"Design · IIT B.Des",kind:"c",due:"2026-10-31T23:59:00+05:30",close:"31 Oct (late fee to 6 Nov)",exam:"17 Jan 2027",url:"https://www.uceed.iitb.ac.in",host:"uceed.iitb.ac.in"},
+{eid:"ailet",n:"AILET 2027",sub:"Law · NLU Delhi",kind:"c",due:"2026-11-10T23:59:00+05:30",close:"10 Nov 2026",exam:"13 Dec 2026",url:"https://nationallawuniversitydelhi.in",host:"nationallawuniversitydelhi.in"},
+{eid:"nid",n:"NID DAT 2027",sub:"Design · B.Des at NID",kind:"c",due:"2026-11-30T23:59:00+05:30",close:"30 Nov 2026",exam:"Prelims 20 Dec",url:"https://admissions.nid.edu",host:"admissions.nid.edu"},
+{eid:"nda",n:"NDA & NA (I) 2027",sub:"Defence · UPSC",kind:"c",due:"2026-12-22T23:59:00+05:30",open:"2026-12-02T00:00:00+05:30",close:"22 Dec 2026 (opens 2 Dec)",exam:"11 Apr 2027",url:"https://upsc.gov.in",host:"upsc.gov.in"}
 ];
 const PCM="Class 11–12 NCERT Physics, Chemistry and Maths. See the core syllabus in Section E.";
 const EX=[
@@ -1024,7 +1157,7 @@ function renderGirls(){
   let h='<div class="g-stats">'+GSTATS.map(s=>'<div class="g-stat"><b>'+s[0]+'</b><span>'+s[1]+'</span></div>').join("")+'</div>';
   GGROUPS.forEach(g=>{
     h+='<h3 class="sub g-sub">'+g.t+'</h3><div class="g-grid">'+g.cards.map(c=>
-      '<article class="g-card"><div><span class="gb">'+c.tag+'</span></div><h3>'+c.h+'</h3><ul>'+c.pts.map(p=>'<li>'+p+'</li>').join("")+'</ul>'+
+      '<article class="g-card"><div><span class="gb">'+c.tag+'</span></div><h3>'+c.h+'</h3><ul>'+c.pts.slice(0,2).map(p=>'<li>'+p+'</li>').join("")+'</ul>'+(c.pts.length>2?'<details class="more pk"><summary>More details</summary><ul>'+c.pts.slice(2).map(p=>'<li>'+p+'</li>').join("")+'</ul></details>':"")+
       '<div class="g-foot">'+(c.ex?'<button class="mb" type="button" data-open="'+c.ex+'">See the exam</button>':"")+
       '<span class="src-n">Source: '+c.src.map(s=>'<a href="'+s[1]+'" target="_blank" rel="noopener">'+s[0]+'</a>').join(", ")+'</span></div></article>').join("")+'</div>';
     if(g.t==="Seats set aside for girls"){
@@ -1036,6 +1169,34 @@ function renderGirls(){
   h+='<h3 class="sub g-sub">Checked, but no girls-specific benefit</h3><div class="g-none">'+GNONE.map(r=>'<div><b>'+r[0]+'</b><span>'+r[1]+'</span></div>').join("")+'</div>';
   host.innerHTML=h;
 }
+/* reminder dates for the .ics download. Confirmed = fixed by the conducting body. Expected = projected from the 2026 cycle, so the event only says "check the portal". */
+const ICS={
+ clat:[{d:"2026-10-31",t:"Last date to apply",a:[7,1]},{d:"2026-12-06",t:"Exam day, 2–4 PM",a:[7,1]}],
+ uceed:[{d:"2026-10-31",t:"Last date to apply",a:[7,1]},{d:"2026-11-06",t:"Last date with late fee, 5 PM",a:[1]},{d:"2027-01-17",t:"Exam day, 9 AM–12 noon",a:[7,1]}],
+ ailet:[{d:"2026-11-10",t:"Last date to apply",a:[7,1]},{d:"2026-12-13",t:"Exam day, 2–4 PM",a:[7,1]}],
+ nid:[{d:"2026-11-30",t:"Last date to apply, 11:59 PM",a:[7,1]},{d:"2026-12-20",t:"Prelims exam day",a:[7,1]}],
+ nda:[{d:"2026-12-02",t:"NDA (I) form opens",a:[1]},{d:"2026-12-22",t:"Last date to apply",a:[7,1]},{d:"2027-04-11",t:"Exam day",a:[7,1]}],
+ nift:[{d:"2026-11-15",t:"Check form window",x:1,a:[0]},{d:"2027-01-10",t:"Exam day",a:[7,1]}],
+ bitsat:[{d:"2026-12-15",t:"Check form window",x:1,a:[0]}],
+ viteee:[{d:"2026-10-26",t:"Check form window",x:1,a:[0]}],
+ srm:[{d:"2026-11-01",t:"Check form window",x:1,a:[0]}],
+ met:[{d:"2026-10-12",t:"Check form window",x:1,a:[0]}],
+ comedk:[{d:"2027-01-05",t:"Check form window",x:1,a:[0]}],
+ mht:[{d:"2027-01-10",t:"Check form window",x:1,a:[0]}],
+ kcet:[{d:"2027-01-16",t:"Check form window",x:1,a:[0]}],
+ wbjee:[{d:"2027-03-10",t:"Check form window",x:1,a:[0]}],
+ apeapcet:[{d:"2027-02-04",t:"Check form window",x:1,a:[0]}],
+ tgeapcet:[{d:"2027-02-19",t:"Check form window",x:1,a:[0]}],
+ keam:[{d:"2027-01-05",t:"Check form window",x:1,a:[0]}],
+ navy:[{d:"2027-05-29",t:"Check form window",x:1,a:[0]}],
+ iat:[{d:"2027-03-05",t:"Check form window",x:1,a:[0]}],
+ nest:[{d:"2027-01-05",t:"Check form window",x:1,a:[0]}],
+ isi:[{d:"2027-02-12",t:"Check form window",x:1,a:[0]}],
+ cuet:[{d:"2027-01-03",t:"Check form window",x:1,a:[0]}],
+ nata:[{d:"2027-03-01",t:"Check form window",x:1,a:[0]}],
+ ipmat:[{d:"2027-02-02",t:"Check form window",x:1,a:[0]}],
+ ipmatr:[{d:"2027-02-06",t:"Check form window",x:1,a:[0]}]
+};
 /* ---------- helpers ---------- */
 const $=(s,r=document)=>r.querySelector(s);
 const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
@@ -1092,7 +1253,7 @@ function renderTickets(){
       '<h3>'+t.n+'</h3><p class="t-sub">'+t.sub+'</p><div class="t-perf"></div>'+
       '<div class="t-count"><span class="t-num'+cls+u+'" '+(cls===""?'data-n="'+big+'"':"")+'>'+big+'</span><span class="t-unit mono">'+unit+'</span></div>'+
       '<dl class="t-meta"><div><dt>Closes</dt><dd>'+t.close+'</dd></div><div><dt>Exam</dt><dd>'+t.exam+'</dd></div></dl>'+
-      '<a class="t-link" href="'+t.url+'" target="_blank" rel="noopener">'+t.host+' ↗</a></article>';
+      '<div class="t-rem"><a class="t-link" href="'+t.url+'" target="_blank" rel="noopener">'+t.host+' ↗</a>'+(t.eid?'<button type="button" data-ics="'+t.eid+'">Remind me</button>':"")+'</div></article>';
   }).join("");
 }
 
@@ -1134,9 +1295,9 @@ function exCard(x){
   '<span class="s">'+x.full+' · '+x.body+'</span><span class="pl" aria-hidden="true">+</span></button>'+
   '<div class="ex-b" id="exb-'+x.id+'" hidden><div class="ex-in">'+
   '<div class="facts">'+fact("ap","Apply",x.apply)+fact("ex","Exam date",x.exam)+fact("fee","Fee",x.fee)+'</div>'+
-  '<dl class="spec">'+spec("Leads to",x.leads)+spec("Eligibility",x.elig)+spec("Pattern",x.pattern)+spec("Syllabus",x.syl)+'</dl>'+
+  '<dl class="spec">'+spec("Leads to",x.leads)+'</dl>'+'<details class="more"><summary>Eligibility, pattern and syllabus</summary><dl class="spec">'+spec("Eligibility",x.elig)+spec("Pattern",x.pattern)+spec("Syllabus",x.syl)+'</dl></details>'+
   (GD[x.id]?'<div class="callout girl"><h4>For girl candidates</h4><p>'+GD[x.id]+'</p></div>':"")+(x.note?'<div class="callout note"><h4>Good to know</h4><p>'+x.note+'</p></div>':"")+
-  '<div class="ex-foot"><a class="mb pri" href="'+x.portal[1]+'" target="_blank" rel="noopener">Official portal: '+x.portal[0]+' ↗</a><button class="mb" type="button" data-plan="'+x.id+'" aria-pressed="false">Add to my list</button></div>'+
+  '<div class="ex-foot"><a class="mb pri" href="'+x.portal[1]+'" target="_blank" rel="noopener">Official portal: '+x.portal[0]+' ↗</a><button class="mb" type="button" data-plan="'+x.id+'" aria-pressed="false">Add to my list</button><button class="mb" type="button" data-cmp="'+x.id+'">Compare</button></div>'+
   '</div></div></article>';
 }
 function renderEx(openId){
@@ -1286,5 +1447,208 @@ renderPay(); renderCar(false);
 renderQz(); renderGoals(); renderGirls(); syncPlan();
 if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(()=>{ if(window.ScrollTrigger) ScrollTrigger.refresh() }) }
 startMotion();
+/* ---------- v3 extras: theme, search, compare, reminders, section navigation ---------- */
+(function(){
+  const root=document.documentElement;
+  const mq=window.matchMedia?matchMedia("(prefers-color-scheme: dark)"):null;
+  function isDark(){ const t=root.getAttribute("data-theme"); return t?t==="dark":!!(mq&&mq.matches) }
+  function paintTheme(){
+    const meta=document.querySelector('meta[name="theme-color"]'); if(meta) meta.setAttribute("content",isDark()?"#0E131E":"#F4F5F8");
+    const b=$("#themeBtn"); if(b){ b.setAttribute("aria-pressed",isDark()); b.setAttribute("aria-label",isDark()?"Switch to light theme":"Switch to dark theme") }
+  }
+  $("#themeBtn").addEventListener("click",()=>{
+    const next=isDark()?"light":"dark";
+    root.setAttribute("data-theme",next);
+    try{localStorage.setItem("bj-theme",next)}catch(e){}
+    paintTheme();
+  });
+  if(mq&&mq.addEventListener) mq.addEventListener("change",paintTheme);
+  paintTheme();
+
+  /* ---------- reminders (.ics) ---------- */
+  function pad(n){ return String(n).padStart(2,"0") }
+  function ymd(iso){ return iso.replace(/-/g,"") }
+  function nextDay(iso){ const d=new Date(iso+"T00:00:00Z"); d.setUTCDate(d.getUTCDate()+1); return d.getUTCFullYear()+pad(d.getUTCMonth()+1)+pad(d.getUTCDate()) }
+  function esc(s){ return String(s).replace(/\\/g,"\\\\").replace(/;/g,"\\;").replace(/,/g,"\\,").replace(/\r?\n/g,"\\n") }
+  function fold(l){ const o=[]; while(l.length>74){ o.push(l.slice(0,74)); l=" "+l.slice(74) } o.push(l); return o.join("\r\n") }
+  function stampNow(){ const d=new Date(); return d.getUTCFullYear()+pad(d.getUTCMonth()+1)+pad(d.getUTCDate())+"T"+pad(d.getUTCHours())+pad(d.getUTCMinutes())+pad(d.getUTCSeconds())+"Z" }
+  function buildIcs(ids){
+    const L=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Beyond JEE//Exam reminders//EN","CALSCALE:GREGORIAN","METHOD:PUBLISH","X-WR-CALNAME:Beyond JEE reminders"];
+    let n=0; const ts=stampNow();
+    ids.forEach(id=>{
+      const x=exById(id), ev=ICS[id]; if(!x||!ev) return;
+      ev.forEach((e,i)=>{
+        n++;
+        const title=(e.x?"Check form window: ":"")+x.n+(e.x?"":" – "+e.t);
+        const desc=e.x
+          ?"Projected from the 2026 cycle, not announced yet. Check "+x.portal[0]+" for the real dates. "+x.apply
+          :e.t+". Official portal: "+x.portal[0]+". Dates as checked on 3 Oct 2026. Confirm on the portal before you rely on them.";
+        L.push("BEGIN:VEVENT","UID:"+id+"-"+i+"-"+e.d+"@beyond-jee",
+          "DTSTAMP:"+ts,"DTSTART;VALUE=DATE:"+ymd(e.d),"DTEND;VALUE=DATE:"+nextDay(e.d),
+          fold("SUMMARY:"+esc(title)),fold("DESCRIPTION:"+esc(desc)),fold("URL:"+x.portal[1]),"TRANSP:TRANSPARENT");
+        (e.a||[]).forEach(days=>{
+          L.push("BEGIN:VALARM","ACTION:DISPLAY",fold("DESCRIPTION:"+esc(title)),"TRIGGER:"+(days?"-P"+days+"D":"PT9H"),"END:VALARM");
+        });
+        L.push("END:VEVENT");
+      });
+    });
+    L.push("END:VCALENDAR");
+    return {text:L.join("\r\n")+"\r\n",count:n};
+  }
+  function downloadIcs(ids,name){
+    const r=buildIcs(ids); if(!r.count) return false;
+    const blob=new Blob([r.text],{type:"text/calendar;charset=utf-8"});
+    const url=URL.createObjectURL(blob), a=document.createElement("a");
+    a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),1500); return true;
+  }
+  $("#icsBtn").addEventListener("click",e=>{
+    const b=e.currentTarget;
+    if(!plan.length){ b.textContent="Add exams to your list first"; setTimeout(()=>{b.textContent="Download reminders (.ics)"},2200); return }
+    const ok=downloadIcs(plan,"beyond-jee-reminders.ics");
+    b.textContent=ok?"Downloaded":"No dates for these exams"; setTimeout(()=>{b.textContent="Download reminders (.ics)"},2200);
+  });
+  document.addEventListener("click",e=>{
+    const r=e.target.closest("[data-ics]"); if(!r) return;
+    const id=r.dataset.ics; if(downloadIcs([id],"beyond-jee-"+id+".ics")){ const t=r.textContent; r.textContent="Downloaded"; setTimeout(()=>{r.textContent=t},2000) }
+  });
+
+  /* ---------- compare ---------- */
+  const cmp=["","",""];
+  function cmpSelects(){
+    $("#cmpSel").innerHTML=cmp.map((v,i)=>'<label class="vh" for="cmp'+i+'">Exam '+(i+1)+'</label><select id="cmp'+i+'" data-i="'+i+'"><option value="">'+(i<2?"Choose exam "+(i+1):"Add a third (optional)")+'</option>'+EX.map(x=>'<option value="'+x.id+'"'+(x.id===v?" selected":"")+'>'+x.n+'</option>').join("")+'</select>').join("");
+  }
+  function cmpTable(){
+    const ids=cmp.filter(Boolean), host=$("#cmpOut");
+    if(ids.length<2){ host.innerHTML='<p class="empty">Choose at least two exams to compare them.</p>'; return }
+    const xs=ids.map(exById);
+    const rows=[["","Field",x=>TABNAME(x.cat)],["","Full name",x=>x.full+" · "+x.body],["ap","Apply by",x=>x.apply],["ex","Exam date",x=>x.exam],["","Fee",x=>x.fee||"See the brochure."],["","Eligibility",x=>x.elig],["","Pattern",x=>x.pattern],["gl","For girls",x=>GD[x.id]||"No girls-specific benefit found."],["","Portal",x=>'<a href="'+x.portal[1]+'" target="_blank" rel="noopener">'+x.portal[0]+' ↗</a>']];
+    host.innerHTML='<div class="scroll"><table class="cmp-t"><thead><tr><th></th>'+xs.map(x=>'<th>'+x.n+'</th>').join("")+'</tr></thead><tbody>'+
+      rows.map(r=>'<tr class="'+r[0]+'"><td>'+r[1]+'</td>'+xs.map(x=>'<td>'+r[2](x)+'</td>').join("")+'</tr>').join("")+'</tbody></table></div>';
+  }
+  function TABNAME(c){ const t=TABS.find(t=>t[0]===c); return t?t[1]:c }
+  cmpSelects(); cmpTable();
+  $("#cmpSel").addEventListener("change",e=>{ const s=e.target.closest("select"); if(!s) return; cmp[+s.dataset.i]=s.value; cmpTable() });
+  document.addEventListener("click",e=>{
+    const b=e.target.closest("[data-cmp]"); if(!b) return;
+    const id=b.dataset.cmp; if(!cmp.includes(id)){ const k=cmp.indexOf(""); cmp[k===-1?2:k]=id }
+    cmpSelects(); cmpTable(); scrollToEl($("#cmp"));
+  });
+
+  /* ---------- search ---------- */
+  const strip=h=>String(h||"").replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim();
+  function buildIndex(){
+    const items=[];
+    EX.forEach(x=>{
+      const hay=[x.n,x.full,x.body,x.leads,x.elig,x.pattern,x.syl,x.apply,x.exam,x.fee,x.note,GD[x.id],GB[x.id]].map(strip).join(" ");
+      items.push({type:"Exams",title:x.n,sub:x.full+" · "+x.body,hay,name:x.n.toLowerCase(),pill:GB[x.id],go:()=>openExam(x.id)});
+    });
+    GGROUPS.forEach(g=>g.cards.forEach(c=>{
+      items.push({type:"For girls",title:c.h,sub:c.tag,hay:strip(c.tag+" "+c.h+" "+c.pts.join(" ")+" women girls female quota seats fee"),name:c.h.toLowerCase(),go:()=>{ const el=$("#girls"); scrollToEl(el); }});
+    }));
+    GFEE.forEach(r=>items.push({type:"For girls",title:r[0]+": girls pay "+r[1],sub:"Others pay "+r[2]+" · saves "+r[3],hay:strip(r.join(" ")+" fee girls women concession"),name:r[0].toLowerCase(),go:()=>scrollToEl($("#girls"))}));
+    Object.keys(CAR).forEach(k=>{
+      const c=CAR[k];
+      items.push({type:"Careers",title:c.t,sub:c.s+" · "+c.jobs.slice(0,3).map(j=>j[0]).join(", "),hay:strip(c.t+" "+c.s+" "+c.f+" "+c.g+" "+c.r+" "+c.jobs.map(j=>j.join(" ")).join(" ")),name:c.t.toLowerCase(),go:()=>{ carKey=k; $$("#carCat .chip").forEach(ch=>ch.setAttribute("aria-pressed",ch.dataset.k===k)); renderCar(true); scrollToEl($("#careers")) }});
+    });
+    $$(".nav-links a").forEach(a=>{ const t=$("span",a).textContent; items.push({type:"Sections",title:t,sub:"Section "+$("b",a).textContent,hay:t.toLowerCase(),name:t.toLowerCase(),go:()=>scrollToEl($("#"+a.dataset.s))}) });
+    return items;
+  }
+  let IDX=null, sel=0, shown=[];
+  function esc2(s){ return s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])) }
+  function markIn(text,toks){
+    let out=esc2(text);
+    toks.forEach(t=>{ if(t.length<2) return; out=out.replace(new RegExp("("+t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","ig"),"<mark>$1</mark>") });
+    return out;
+  }
+  function snippet(it,toks){
+    const h=it.hay, low=h.toLowerCase();
+    for(const t of toks){ const i=low.indexOf(t); if(i>=0){ const a=Math.max(0,i-34), b=Math.min(h.length,i+t.length+60); return (a?"…":"")+h.slice(a,b)+(b<h.length?"…":"") } }
+    return it.sub;
+  }
+  function runSearch(q){
+    if(!IDX) IDX=buildIndex();
+    const toks=q.toLowerCase().split(/\s+/).filter(Boolean);
+    let res;
+    if(!toks.length){
+      res=IDX.filter(i=>i.type==="Sections").concat(IDX.filter(i=>i.type==="For girls").slice(0,3));
+    }else{
+      res=IDX.map(i=>{
+        const hay=i.hay.toLowerCase(); if(!toks.every(t=>hay.includes(t))) return null;
+        let sc=0; toks.forEach(t=>{ if(i.name.startsWith(t)) sc+=6; else if(i.name.includes(t)) sc+=4; if(i.sub.toLowerCase().includes(t)) sc+=1 });
+        return {i,sc};
+      }).filter(Boolean).sort((a,b)=>b.sc-a.sc).map(r=>r.i).slice(0,24);
+    }
+    shown=res; sel=0;
+    const host=$("#srchOut");
+    if(!res.length){ host.innerHTML='<li class="srch-empty">Nothing found. Try a shorter word such as “fee”, “women”, “NDA” or “CUET”.</li>'; return }
+    let html="", last="";
+    res.forEach((r,n)=>{
+      if(r.type!==last){ html+='<li class="srch-g" role="presentation">'+r.type+'</li>'; last=r.type }
+      html+='<li class="srch-it" role="option" id="sr'+n+'" data-n="'+n+'" aria-selected="'+(n===0)+'"><b>'+markIn(r.title,toks)+(r.pill?' <span class="gb">'+r.pill+'</span>':"")+'</b><span>'+markIn(snippet(r,toks),toks)+'</span></li>';
+    });
+    host.innerHTML=html;
+  }
+  function paintSel(){
+    $$(".srch-it").forEach(el=>el.setAttribute("aria-selected",+el.dataset.n===sel));
+    const el=$("#sr"+sel); if(el) el.scrollIntoView({block:"nearest"});
+  }
+  let lastFocus=null;
+  function openSearch(){
+    lastFocus=document.activeElement;
+    $("#srch").hidden=false; document.body.style.overflow="hidden";
+    const i=$("#srchIn"); i.value=""; runSearch(""); i.focus();
+  }
+  function closeSearch(){ $("#srch").hidden=true; document.body.style.overflow=""; if(lastFocus&&lastFocus.focus) lastFocus.focus() }
+  function choose(n){ const it=shown[n]; if(!it) return; closeSearch(); setTimeout(()=>it.go(),30) }
+  $("#srchBtn").addEventListener("click",openSearch);
+  $("#srchIn").addEventListener("input",e=>runSearch(e.target.value));
+  $("#srch").addEventListener("click",e=>{
+    if(e.target.id==="srch"){ closeSearch(); return }
+    const it=e.target.closest(".srch-it"); if(it) choose(+it.dataset.n);
+  });
+  document.addEventListener("keydown",e=>{
+    const open=!$("#srch").hidden;
+    const typing=/^(INPUT|TEXTAREA|SELECT)$/.test((document.activeElement||{}).tagName||"");
+    if(!open&&((e.key==="/"&&!typing&&!e.metaKey&&!e.ctrlKey)||((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"))){ e.preventDefault(); openSearch(); return }
+    if(!open) return;
+    if(e.key==="Escape"){ e.preventDefault(); closeSearch() }
+    else if(e.key==="ArrowDown"){ e.preventDefault(); sel=Math.min(shown.length-1,sel+1); paintSel() }
+    else if(e.key==="ArrowUp"){ e.preventDefault(); sel=Math.max(0,sel-1); paintSel() }
+    else if(e.key==="Enter"){ e.preventDefault(); choose(sel) }
+  });
+
+  /* ---------- section navigation ---------- */
+  const links=$$(".nav-links a");
+  links.forEach(a=>{ a.title=$("span",a).textContent });
+  const order=links.map(a=>({id:a.dataset.s,letter:$("b",a).textContent,name:$("span",a).textContent}));
+  order.forEach((s,i)=>{
+    const sec=$("#"+s.id); if(!sec) return;
+    const prev=order[i-1], next=order[i+1];
+    const nav=document.createElement("nav"); nav.className="sec-nav"; nav.setAttribute("aria-label","Between sections");
+    nav.innerHTML=(prev?'<a href="#'+prev.id+'">← <small>'+prev.letter+'</small> '+prev.name+'</a>':"<span></span>")+(next?'<a href="#'+next.id+'"><small>'+next.letter+'</small> '+next.name+' →</a>':'<a href="#top">Back to top ↑</a>');
+    sec.appendChild(nav);
+  });
+  function setCur(id){
+    const s=order.find(o=>o.id===id); if(!s) return;
+    $("#navCur").textContent=s.letter+" · "+s.name;
+    const a=links.find(x=>x.dataset.s===id), box=$("#navLinks");
+    if(a&&box){ const target=a.offsetLeft-box.clientWidth/2+a.clientWidth/2; box.scrollTo({left:Math.max(0,target),behavior:reduce?"auto":"smooth"}) }
+  }
+  if("IntersectionObserver" in window){
+    const io=new IntersectionObserver(es=>{
+      es.forEach(e=>{
+        if(!e.isIntersecting) return;
+        const id=e.target.id; if(id===setCur.last) return; setCur.last=id;
+        links.forEach(x=>x.classList.toggle("on",x.dataset.s===id)); setCur(id);
+      });
+    },{rootMargin:"-45% 0px -54% 0px"});
+    order.forEach(s=>{ const el=$("#"+s.id); if(el) io.observe(el) });
+  }
+  const tt=$("#totop");
+  function onScroll(){ tt.classList.toggle("on",window.scrollY>900) }
+  window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
+  tt.addEventListener("click",()=>window.scrollTo({top:0,behavior:reduce?"auto":"smooth"}));
+})();
 </script>
 </body></html>
