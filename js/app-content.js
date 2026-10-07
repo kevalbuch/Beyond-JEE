@@ -99,4 +99,5 @@ renderPay(); renderCar(false);
 renderQz(); renderGoals(); renderGirls(); renderTiles(); syncPlan();
 if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(()=>{ if(window.ScrollTrigger) ScrollTrigger.refresh() }) }
 startMotion();
-goView((location.hash||"#home").slice(1),{push:false,scroll:false});
+goView("home",{push:false,scroll:false});
+if(location.hash&&location.hash!=="#home"){ try{ history.replaceState(null,"",location.pathname+location.search+"#home") }catch(e){} }
