@@ -1,15 +1,14 @@
 {
-"lastChecked":"2026-10-08T05:59:08Z",
+"lastChecked":"2026-10-08T13:24:39Z",
 "stats":{
-"ok":10,
-"failed":8,
+"ok":11,
+"failed":7,
 "total":18,
 "new":3
 },
 "failedSources":[
 "JEE Main (NTA)",
 "JoSAA",
-"CSAB",
 "BITSAT",
 "KCET (KEA)",
 "TG EAPCET",
@@ -17,6 +16,30 @@
 "IISER IAT"
 ],
 "items":[
+{
+"id":"ea31873fcf5c",
+"time":"2026-10-08T13:24:39Z",
+"source":"CUET-UG",
+"cat":"sci",
+"url":"https://cuet.nta.nic.in",
+"title":"Last Updated: Sep 19, 2026"
+},
+{
+"id":"3d6da4cb2e19",
+"time":"2026-10-08T13:24:39Z",
+"source":"IPMAT Indore (IIM Indore)",
+"cat":"mgt",
+"url":"https://www.iimidr.ac.in",
+"title":"IIM Indore Hosts International Partners’ Da..."
+},
+{
+"id":"a00925a21168",
+"time":"2026-10-08T13:24:39Z",
+"source":"IPMAT Indore (IIM Indore)",
+"cat":"mgt",
+"url":"https://www.iimidr.ac.in",
+"title":"IIM Indore Hosts International Conference on ..."
+},
 {
 "id":"4b9f0181b0b4",
 "time":"2026-10-08T05:59:08Z",
