@@ -1,20 +1,45 @@
 {
-"lastChecked":"2026-10-07T23:03:17Z",
+"lastChecked":"2026-10-08T05:59:08Z",
 "stats":{
 "ok":10,
 "failed":8,
 "total":18,
-"new":0
+"new":3
 },
 "failedSources":[
 "JEE Main (NTA)",
 "JoSAA",
+"CSAB",
 "BITSAT",
 "KCET (KEA)",
 "TG EAPCET",
 "NDA & NA (UPSC)",
-"CUET-UG",
 "IISER IAT"
 ],
-"items":[]
+"items":[
+{
+"id":"4b9f0181b0b4",
+"time":"2026-10-08T05:59:08Z",
+"source":"CUET-UG",
+"cat":"sci",
+"url":"https://cuet.nta.nic.in",
+"title":"/ Government of India"
+},
+{
+"id":"c66a1e26d6c7",
+"time":"2026-10-08T05:59:08Z",
+"source":"CUET-UG",
+"cat":"sci",
+"url":"https://cuet.nta.nic.in",
+"title":"/ Ministry of Education"
+},
+{
+"id":"1da0763b2fcd",
+"time":"2026-10-08T05:59:08Z",
+"source":"CUET-UG",
+"cat":"sci",
+"url":"https://cuet.nta.nic.in",
+"title":"Last Updated: Sep 02, 2026"
+}
+]
 }
