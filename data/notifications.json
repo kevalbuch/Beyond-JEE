@@ -1,13 +1,14 @@
 {
-"lastChecked":"2026-10-10T05:48:30Z",
+"lastChecked":"2026-10-10T12:27:38Z",
 "stats":{
-"ok":12,
-"failed":6,
+"ok":11,
+"failed":7,
 "total":18,
-"new":0
+"new":1
 },
 "failedSources":[
 "JEE Main (NTA)",
+"CSAB",
 "BITSAT",
 "KCET (KEA)",
 "TG EAPCET",
@@ -15,6 +16,14 @@
 "IISER IAT"
 ],
 "items":[
+{
+"id":"e44c137b1cba",
+"time":"2026-10-10T12:27:38Z",
+"source":"CUET-UG",
+"cat":"sci",
+"url":"https://cuet.nta.nic.in",
+"title":"Last Updated: Oct 10, 2026"
+},
 {
 "id":"ea31873fcf5c",
 "time":"2026-10-08T13:24:39Z",
