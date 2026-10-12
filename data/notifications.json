@@ -1,22 +1,37 @@
 {
-"lastChecked":"2026-10-11T21:55:13Z",
+"lastChecked":"2026-10-12T05:52:27Z",
 "stats":{
-"ok":10,
-"failed":8,
+"ok":11,
+"failed":7,
 "total":18,
-"new":0
+"new":2
 },
 "failedSources":[
 "JEE Main (NTA)",
-"CSAB",
+"JoSAA",
 "BITSAT",
 "KCET (KEA)",
 "TG EAPCET",
 "NDA & NA (UPSC)",
-"CUET-UG",
 "IISER IAT"
 ],
 "items":[
+{
+"id":"f8cda059b1a5",
+"time":"2026-10-12T05:52:27Z",
+"source":"IPMAT Indore (IIM Indore)",
+"cat":"mgt",
+"url":"https://www.iimidr.ac.in",
+"title":"EXPLORER PGPMX PROGRAMME"
+},
+{
+"id":"e6df03396992",
+"time":"2026-10-12T05:52:27Z",
+"source":"IPMAT Indore (IIM Indore)",
+"cat":"mgt",
+"url":"https://www.iimidr.ac.in",
+"title":"Explore EMP-MMS Programme"
+},
 {
 "id":"e44c137b1cba",
 "time":"2026-10-10T12:27:38Z",
