@@ -1,20 +1,30 @@
 {
-"lastChecked":"2026-10-13T14:07:29Z",
+"lastChecked":"2026-10-13T22:42:13Z",
 "stats":{
-"ok":12,
-"failed":6,
+"ok":10,
+"failed":8,
 "total":18,
 "new":1
 },
 "failedSources":[
 "JEE Main (NTA)",
+"JoSAA",
 "BITSAT",
 "KCET (KEA)",
 "TG EAPCET",
 "NDA & NA (UPSC)",
+"CUET-UG",
 "IISER IAT"
 ],
 "items":[
+{
+"id":"0430bcacf5c9",
+"time":"2026-10-13T22:42:13Z",
+"source":"MHT CET",
+"cat":"state",
+"url":"https://cetcell.mahacet.org",
+"title":"This page changed — open it to see what's new."
+},
 {
 "id":"362a03a8b89f",
 "time":"2026-10-13T14:07:29Z",
