@@ -1,10 +1,10 @@
 {
-"lastChecked":"2026-10-13T00:36:30Z",
+"lastChecked":"2026-10-13T14:07:29Z",
 "stats":{
-"ok":11,
-"failed":7,
+"ok":12,
+"failed":6,
 "total":18,
-"new":0
+"new":1
 },
 "failedSources":[
 "JEE Main (NTA)",
@@ -12,10 +12,17 @@
 "KCET (KEA)",
 "TG EAPCET",
 "NDA & NA (UPSC)",
-"CUET-UG",
 "IISER IAT"
 ],
 "items":[
+{
+"id":"362a03a8b89f",
+"time":"2026-10-13T14:07:29Z",
+"source":"NID DAT",
+"cat":"des",
+"url":"https://admissions.nid.edu",
+"title":"As on 3 October 2026, an amendment has been made regarding the revised date for filling up the application form, the window to edit the application form and the Doctoral Research Test. Kindly refer to the Doctor of Philo"
+},
 {
 "id":"d413a8926848",
 "time":"2026-10-12T15:17:35Z",
