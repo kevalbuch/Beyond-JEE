@@ -1,14 +1,14 @@
 {
-"lastChecked":"2026-10-14T04:49:08Z",
+"lastChecked":"2026-10-14T11:47:40Z",
 "stats":{
 "ok":11,
 "failed":7,
 "total":18,
-"new":0
+"new":3
 },
 "failedSources":[
 "JEE Main (NTA)",
-"CSAB",
+"JoSAA",
 "BITSAT",
 "KCET (KEA)",
 "TG EAPCET",
@@ -16,6 +16,30 @@
 "IISER IAT"
 ],
 "items":[
+{
+"id":"07f996d1a213",
+"time":"2026-10-14T11:47:40Z",
+"source":"NID DAT",
+"cat":"des",
+"url":"https://admissions.nid.edu",
+"title":"NID Andhra Pradesh, NID Haryana, NID Madhya Pradesh, NID Assam"
+},
+{
+"id":"df9037578a0d",
+"time":"2026-10-14T11:47:40Z",
+"source":"IPMAT Indore (IIM Indore)",
+"cat":"mgt",
+"url":"https://www.iimidr.ac.in",
+"title":"EXPLORE PGPMX PROGRAMME"
+},
+{
+"id":"4fbf216a8916",
+"time":"2026-10-14T11:47:40Z",
+"source":"IPMAT Indore (IIM Indore)",
+"cat":"mgt",
+"url":"https://www.iimidr.ac.in",
+"title":"EXPLORE EPGP PROGRAMME"
+},
 {
 "id":"0430bcacf5c9",
 "time":"2026-10-13T22:42:13Z",
