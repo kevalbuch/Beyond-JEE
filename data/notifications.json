@@ -1,10 +1,10 @@
 {
-"lastChecked":"2026-10-16T16:35:37Z",
+"lastChecked":"2026-10-16T21:04:14Z",
 "stats":{
 "ok":10,
 "failed":8,
 "total":18,
-"new":2
+"new":1
 },
 "failedSources":[
 "JEE Main (NTA)",
@@ -17,6 +17,14 @@
 "IISER IAT"
 ],
 "items":[
+{
+"id":"b4a80289ab1b",
+"time":"2026-10-16T21:04:14Z",
+"source":"NATA",
+"cat":"des",
+"url":"https://www.nata.in",
+"title":"This page changed — open it to see what's new."
+},
 {
 "id":"aaaa8e563cd5",
 "time":"2026-10-16T16:35:37Z",
