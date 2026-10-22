@@ -1,19 +1,18 @@
 {
-"lastChecked":"2026-10-22T04:39:28Z",
+"lastChecked":"2026-10-22T11:47:19Z",
 "stats":{
-"ok":10,
-"failed":8,
+"ok":11,
+"failed":7,
 "total":18,
 "new":0
 },
 "failedSources":[
 "JEE Main (NTA)",
-"CSAB",
+"JoSAA",
 "BITSAT",
 "KCET (KEA)",
 "TG EAPCET",
 "NDA & NA (UPSC)",
-"CUET-UG",
 "IISER IAT"
 ],
 "items":[
