@@ -1,5 +1,5 @@
 {
-"lastChecked":"2026-10-22T21:32:55Z",
+"lastChecked":"2026-10-23T04:44:54Z",
 "stats":{
 "ok":11,
 "failed":7,
@@ -8,11 +8,11 @@
 },
 "failedSources":[
 "JEE Main (NTA)",
+"CSAB",
 "BITSAT",
 "KCET (KEA)",
 "TG EAPCET",
 "NDA & NA (UPSC)",
-"CUET-UG",
 "IISER IAT"
 ],
 "items":[
