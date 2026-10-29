@@ -1,8 +1,8 @@
 {
-"lastChecked":"2026-10-29T12:55:58Z",
+"lastChecked":"2026-10-29T22:42:58Z",
 "stats":{
-"ok":11,
-"failed":7,
+"ok":10,
+"failed":8,
 "total":18,
 "new":0
 },
@@ -12,6 +12,7 @@
 "KCET (KEA)",
 "TG EAPCET",
 "NDA & NA (UPSC)",
+"CUET-UG",
 "IISER IAT",
 "NID DAT"
 ],
