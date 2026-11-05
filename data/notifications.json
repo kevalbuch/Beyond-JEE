@@ -1,8 +1,8 @@
 {
-"lastChecked":"2026-11-05T06:40:22Z",
+"lastChecked":"2026-11-05T19:54:43Z",
 "stats":{
-"ok":11,
-"failed":7,
+"ok":10,
+"failed":8,
 "total":18,
 "new":1
 },
@@ -10,12 +10,21 @@
 "JEE Main (NTA)",
 "BITSAT",
 "KCET (KEA)",
+"AP EAPCET",
 "TG EAPCET",
 "NDA & NA (UPSC)",
 "IISER IAT",
 "NID DAT"
 ],
 "items":[
+{
+"id":"75ced162cafa",
+"time":"2026-11-05T19:54:43Z",
+"source":"IPMAT Indore (IIM Indore)",
+"cat":"mgt",
+"url":"https://www.iimidr.ac.in",
+"title":"To create and apply knowledge, set global standards in management education, and nurture courageous, compassionate and innovative leaders who create sustainable value for business, society and the nation, while developin"
+},
 {
 "id":"398d8688e8d8",
 "time":"2026-11-05T06:40:22Z",
