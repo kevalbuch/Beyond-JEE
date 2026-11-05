@@ -1,22 +1,29 @@
 {
-"lastChecked":"2026-11-04T23:38:16Z",
+"lastChecked":"2026-11-05T06:40:22Z",
 "stats":{
-"ok":10,
-"failed":8,
+"ok":11,
+"failed":7,
 "total":18,
-"new":0
+"new":1
 },
 "failedSources":[
 "JEE Main (NTA)",
 "BITSAT",
 "KCET (KEA)",
-"AP EAPCET",
 "TG EAPCET",
 "NDA & NA (UPSC)",
 "IISER IAT",
 "NID DAT"
 ],
 "items":[
+{
+"id":"398d8688e8d8",
+"time":"2026-11-05T06:40:22Z",
+"source":"IPMAT Indore (IIM Indore)",
+"cat":"mgt",
+"url":"https://www.iimidr.ac.in",
+"title":"Vision, Mission and Logo"
+},
 {
 "id":"b02be79b6cc1",
 "time":"2026-10-17T10:39:18Z",
