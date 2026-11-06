@@ -1,8 +1,8 @@
 {
-"lastChecked":"2026-11-05T19:54:43Z",
+"lastChecked":"2026-11-06T06:36:54Z",
 "stats":{
-"ok":10,
-"failed":8,
+"ok":11,
+"failed":7,
 "total":18,
 "new":1
 },
@@ -10,13 +10,20 @@
 "JEE Main (NTA)",
 "BITSAT",
 "KCET (KEA)",
-"AP EAPCET",
 "TG EAPCET",
 "NDA & NA (UPSC)",
 "IISER IAT",
 "NID DAT"
 ],
 "items":[
+{
+"id":"7feccc6685b5",
+"time":"2026-11-06T06:36:54Z",
+"source":"IPMAT Indore (IIM Indore)",
+"cat":"mgt",
+"url":"https://www.iimidr.ac.in",
+"title":"International Conference on Youth for Impact 2.0: Advancing Social Equity, Inclusion and Transformative Leadership"
+},
 {
 "id":"75ced162cafa",
 "time":"2026-11-05T19:54:43Z",
