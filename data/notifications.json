@@ -1,8 +1,8 @@
 {
-"lastChecked":"2026-11-09T06:19:13Z",
+"lastChecked":"2026-11-09T22:17:44Z",
 "stats":{
-"ok":10,
-"failed":8,
+"ok":9,
+"failed":9,
 "total":18,
 "new":0
 },
@@ -13,6 +13,7 @@
 "AP EAPCET",
 "TG EAPCET",
 "NDA & NA (UPSC)",
+"NEST",
 "IISER IAT",
 "NID DAT"
 ],
