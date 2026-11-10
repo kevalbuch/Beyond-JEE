@@ -1,8 +1,8 @@
 {
-"lastChecked":"2026-11-09T22:17:44Z",
+"lastChecked":"2026-11-10T07:12:27Z",
 "stats":{
-"ok":9,
-"failed":9,
+"ok":10,
+"failed":8,
 "total":18,
 "new":0
 },
@@ -10,7 +10,6 @@
 "JEE Main (NTA)",
 "BITSAT",
 "KCET (KEA)",
-"AP EAPCET",
 "TG EAPCET",
 "NDA & NA (UPSC)",
 "NEST",
