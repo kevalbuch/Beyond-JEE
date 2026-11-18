@@ -1,10 +1,10 @@
 {
-"lastChecked":"2026-11-17T20:51:33Z",
+"lastChecked":"2026-11-18T07:22:12Z",
 "stats":{
 "ok":9,
 "failed":9,
 "total":18,
-"new":0
+"new":3
 },
 "failedSources":[
 "JEE Main (NTA)",
@@ -18,6 +18,30 @@
 "NID DAT"
 ],
 "items":[
+{
+"id":"df1f20639bb3",
+"time":"2026-11-18T07:22:12Z",
+"source":"JoSAA",
+"cat":"eng",
+"url":"https://josaa.nic.in",
+"title":"For any query related to IITs & IISc admission, please contact, JoSAA IIT Roorkee Team: josaa@iitr.ac.in For any query related to “NIT+ System” admission, please contact CSAB Team: info.csab2026@i"
+},
+{
+"id":"b149b2375448",
+"time":"2026-11-18T07:22:12Z",
+"source":"JoSAA",
+"cat":"eng",
+"url":"https://josaa.nic.in",
+"title":"New UG program BCyber launched at IIT Kanpur. For details, please check https://iitk.ac.in/wsais/b-cyber.php."
+},
+{
+"id":"33533b36c7c5",
+"time":"2026-11-18T07:22:12Z",
+"source":"JoSAA",
+"cat":"eng",
+"url":"https://josaa.nic.in",
+"title":"Round 5 Seat Allocation Result for JoSAA 2026 has been announced."
+},
 {
 "id":"7feccc6685b5",
 "time":"2026-11-06T06:36:54Z",
